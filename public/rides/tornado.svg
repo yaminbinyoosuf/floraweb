@@ -1,0 +1,14 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#0E1F19"/>
+  <rect width="1200" height="900" fill="url(#paint0_linear_9_2)"/>
+  <path d="M814 132C909 228 956 317 956 397C956 519 845 622 623 706C532 741 443 774 355 803" stroke="#F8F8F4" stroke-width="38" stroke-linecap="round"/>
+  <path d="M809 131C931 246 992 363 992 482C992 651 850 753 566 790" stroke="#7FD5E4" stroke-width="58" stroke-linecap="round"/>
+  <circle cx="269" cy="196" r="121" fill="#D8AF62"/>
+  <text x="92" y="800" fill="#F8F8F4" font-family="Avenir, Arial, sans-serif" font-size="50" font-weight="700">Tornado</text>
+  <defs>
+    <linearGradient id="paint0_linear_9_2" x1="600" y1="0" x2="600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#184837"/>
+      <stop offset="1" stop-color="#0C1F19"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,0 +1,19 @@
+<svg width="1600" height="1200" viewBox="0 0 1600 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1200" fill="#0C1F19"/>
+  <rect width="1600" height="1200" fill="url(#paint0_linear_1_2)"/>
+  <circle cx="1230" cy="173" r="255" fill="#8EDBE8" fill-opacity="0.28"/>
+  <ellipse cx="809" cy="927" rx="671" ry="244" fill="#C1F2F8" fill-opacity="0.23"/>
+  <path d="M176 830C298 692 440 616 602 602C743 590 880 627 1014 706C1128 773 1246 816 1368 836V1200H176V830Z" fill="#D6F4FB"/>
+  <path d="M290 770C405 678 521 632 639 632C760 632 871 675 973 762C1065 839 1150 878 1228 878C1304 878 1380 851 1456 797V1200H290V770Z" fill="#5DBED5"/>
+  <path d="M149 756C218 680 295 622 381 582C490 531 622 522 775 554C890 578 1019 639 1163 737C1249 796 1345 838 1451 861V1200H149V756Z" fill="#2E8DA7"/>
+  <rect x="118" y="832" width="366" height="191" rx="42" fill="#F6FBFD" fill-opacity="0.64"/>
+  <text x="170" y="914" fill="#14372E" font-family="Avenir, Arial, sans-serif" font-size="50" font-weight="700">Wave Pool</text>
+  <text x="170" y="971" fill="#557169" font-family="Avenir, Arial, sans-serif" font-size="28">Premium water-side atmosphere</text>
+  <defs>
+    <linearGradient id="paint0_linear_1_2" x1="800" y1="0" x2="800" y2="1200" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14372E"/>
+      <stop offset="0.56" stop-color="#1A5142"/>
+      <stop offset="1" stop-color="#123F31"/>
+    </linearGradient>
+  </defs>
+</svg>

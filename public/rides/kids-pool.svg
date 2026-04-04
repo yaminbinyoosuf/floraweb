@@ -1,0 +1,15 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#F8F6F1"/>
+  <rect width="1200" height="900" fill="url(#paint0_linear_13_2)"/>
+  <rect x="174" y="483" width="854" height="233" rx="116.5" fill="#DDF5FA"/>
+  <rect x="231" y="536" width="740" height="126" rx="63" fill="#7FD5E4"/>
+  <circle cx="334" cy="285" r="114" fill="#D8AF62"/>
+  <circle cx="698" cy="269" r="62" fill="#A5E4EF"/>
+  <text x="86" y="806" fill="#14372E" font-family="Avenir, Arial, sans-serif" font-size="50" font-weight="700">Kids Pool</text>
+  <defs>
+    <linearGradient id="paint0_linear_13_2" x1="600" y1="0" x2="600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF9F3"/>
+      <stop offset="1" stop-color="#E8F3EE"/>
+    </linearGradient>
+  </defs>
+</svg>

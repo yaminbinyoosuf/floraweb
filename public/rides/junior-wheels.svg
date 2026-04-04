@@ -1,0 +1,15 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#F8F6F1"/>
+  <rect width="1200" height="900" fill="url(#paint0_linear_21_2)"/>
+  <circle cx="408" cy="470" r="168" stroke="#14372E" stroke-width="30"/>
+  <circle cx="408" cy="470" r="58" fill="#D8AF62"/>
+  <circle cx="777" cy="470" r="168" stroke="#7FD5E4" stroke-width="30"/>
+  <circle cx="777" cy="470" r="58" fill="#14372E"/>
+  <text x="86" y="806" fill="#14372E" font-family="Avenir, Arial, sans-serif" font-size="50" font-weight="700">Junior Wheels</text>
+  <defs>
+    <linearGradient id="paint0_linear_21_2" x1="600" y1="0" x2="600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF9F2"/>
+      <stop offset="1" stop-color="#E8F2ED"/>
+    </linearGradient>
+  </defs>
+</svg>

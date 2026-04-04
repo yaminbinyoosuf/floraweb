@@ -1,0 +1,20 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1200" fill="#13231D"/>
+  <rect width="1200" height="1200" fill="url(#paint0_linear_7_2)"/>
+  <path d="M0 856C144 793 265 762 365 762C527 762 719 840 942 996L1200 1175V1200H0V856Z" fill="#0C1B16"/>
+  <circle cx="228" cy="796" r="64" fill="#F8F7F2"/>
+  <circle cx="364" cy="836" r="49" fill="#F8F7F2"/>
+  <circle cx="507" cy="806" r="74" fill="#F8F7F2"/>
+  <circle cx="693" cy="860" r="56" fill="#F8F7F2"/>
+  <circle cx="835" cy="816" r="69" fill="#F8F7F2"/>
+  <circle cx="960" cy="866" r="51" fill="#F8F7F2"/>
+  <circle cx="1040" cy="228" r="121" fill="#D8AF62" fill-opacity="0.95"/>
+  <text x="118" y="1094" fill="#F6F5F0" font-family="Avenir, Arial, sans-serif" font-size="46" font-weight="700">Evening Crowd</text>
+  <text x="118" y="1147" fill="#CBD6D1" font-family="Avenir, Arial, sans-serif" font-size="26">Night-time excitement with softer luxury tones</text>
+  <defs>
+    <linearGradient id="paint0_linear_7_2" x1="600" y1="0" x2="600" y2="1200" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1B4D3D"/>
+      <stop offset="1" stop-color="#10211A"/>
+    </linearGradient>
+  </defs>
+</svg>

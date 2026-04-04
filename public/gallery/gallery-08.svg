@@ -1,0 +1,19 @@
+<svg width="1600" height="1200" viewBox="0 0 1600 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1200" fill="#091410"/>
+  <rect width="1600" height="1200" fill="url(#paint0_linear_8_2)"/>
+  <circle cx="1232" cy="190" r="242" fill="#7FD5E4" fill-opacity="0.18"/>
+  <circle cx="334" cy="238" r="148" fill="#D8AF62" fill-opacity="0.84"/>
+  <path d="M231 986L573 412H832L1184 986H231Z" fill="#F7F6F1" fill-opacity="0.95"/>
+  <path d="M431 986L664 564H743L984 986H431Z" fill="#123F31"/>
+  <path d="M497 737H912" stroke="#7FD5E4" stroke-width="18" stroke-linecap="round"/>
+  <path d="M465 824H943" stroke="#7FD5E4" stroke-width="18" stroke-linecap="round"/>
+  <path d="M0 1062C254 996 483 963 685 963C950 963 1255 1032 1600 1170V1200H0V1062Z" fill="#0B1F18"/>
+  <text x="120" y="1110" fill="#F6F5F0" font-family="Avenir, Arial, sans-serif" font-size="52" font-weight="700">Premium Entry</text>
+  <text x="120" y="1168" fill="#CCD7D1" font-family="Avenir, Arial, sans-serif" font-size="28">Modern, spacious, and built for a stronger first impression</text>
+  <defs>
+    <linearGradient id="paint0_linear_8_2" x1="800" y1="0" x2="800" y2="1200" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14372E"/>
+      <stop offset="1" stop-color="#0C1F19"/>
+    </linearGradient>
+  </defs>
+</svg>

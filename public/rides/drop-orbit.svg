@@ -1,0 +1,14 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#F7F5EF"/>
+  <rect width="1200" height="900" fill="url(#paint0_linear_19_2)"/>
+  <path d="M606 178V721" stroke="#14372E" stroke-width="28" stroke-linecap="round"/>
+  <rect x="484" y="271" width="244" height="108" rx="54" fill="#7FD5E4"/>
+  <circle cx="877" cy="194" r="102" fill="#D8AF62"/>
+  <text x="86" y="807" fill="#14372E" font-family="Avenir, Arial, sans-serif" font-size="50" font-weight="700">Drop Orbit</text>
+  <defs>
+    <linearGradient id="paint0_linear_19_2" x1="600" y1="0" x2="600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FBF8F1"/>
+      <stop offset="1" stop-color="#E7F2ED"/>
+    </linearGradient>
+  </defs>
+</svg>

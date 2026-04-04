@@ -1,0 +1,16 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#12231D"/>
+  <rect width="1200" height="900" fill="url(#paint0_linear_17_2)"/>
+  <rect x="237" y="529" width="725" height="206" rx="58" fill="#DDF6FB"/>
+  <rect x="294" y="582" width="610" height="99" rx="42" fill="#7FD5E4"/>
+  <rect x="499" y="284" width="62" height="246" rx="31" fill="#F8F8F4"/>
+  <circle cx="530" cy="255" r="88" fill="#D8AF62"/>
+  <path d="M530 216L603 255L530 294L457 255L530 216Z" fill="#F8F8F4"/>
+  <text x="84" y="809" fill="#F8F8F4" font-family="Avenir, Arial, sans-serif" font-size="50" font-weight="700">Aqua Play System</text>
+  <defs>
+    <linearGradient id="paint0_linear_17_2" x1="600" y1="0" x2="600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#194837"/>
+      <stop offset="1" stop-color="#0B1F18"/>
+    </linearGradient>
+  </defs>
+</svg>

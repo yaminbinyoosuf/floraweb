@@ -1,0 +1,14 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#F6F4EE"/>
+  <rect width="1200" height="900" fill="url(#paint0_linear_16_2)"/>
+  <path d="M541 172C681 270 754 391 761 536C767 659 728 775 642 883H479C393 773 354 657 360 536C368 391 428 270 541 172Z" fill="#123F31"/>
+  <path d="M544 289C649 363 706 458 710 574C713 651 686 744 629 853H490C432 743 406 651 410 577C416 458 462 364 544 289Z" fill="#7FD5E4"/>
+  <circle cx="259" cy="204" r="96" fill="#D8AF62"/>
+  <text x="85" y="801" fill="#14372E" font-family="Avenir, Arial, sans-serif" font-size="50" font-weight="700">Waterfall</text>
+  <defs>
+    <linearGradient id="paint0_linear_16_2" x1="600" y1="0" x2="600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FAF7F1"/>
+      <stop offset="1" stop-color="#E1EFE8"/>
+    </linearGradient>
+  </defs>
+</svg>

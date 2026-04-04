@@ -1,0 +1,14 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#12241D"/>
+  <rect width="1200" height="900" fill="url(#paint0_linear_20_2)"/>
+  <path d="M104 630C244 587 360 565 453 565C572 565 687 598 799 664C898 720 1004 768 1117 809" stroke="#F8F8F4" stroke-width="28" stroke-linecap="round"/>
+  <path d="M152 565C245 447 362 388 502 388C644 388 774 447 893 565" stroke="#7FD5E4" stroke-width="44" stroke-linecap="round"/>
+  <circle cx="238" cy="212" r="102" fill="#D8AF62"/>
+  <text x="86" y="806" fill="#F8F8F4" font-family="Avenir, Arial, sans-serif" font-size="50" font-weight="700">Rush Coaster</text>
+  <defs>
+    <linearGradient id="paint0_linear_20_2" x1="600" y1="0" x2="600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#184837"/>
+      <stop offset="1" stop-color="#0B1F18"/>
+    </linearGradient>
+  </defs>
+</svg>

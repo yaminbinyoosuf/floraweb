@@ -1,0 +1,16 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1200" fill="#EEF3F0"/>
+  <rect width="1200" height="1200" fill="url(#paint0_linear_5_2)"/>
+  <path d="M615 224C762 319 841 455 852 633C864 820 827 997 741 1164H459C378 990 341 816 347 641C353 455 442 316 615 224Z" fill="#123F31"/>
+  <path d="M602 359C715 432 776 534 785 667C792 769 771 882 723 1008H484C437 884 416 775 421 681C429 536 489 429 602 359Z" fill="#DDF6FB"/>
+  <path d="M441 545C502 626 553 733 595 867C648 724 703 616 760 545" stroke="#83D8E6" stroke-width="34" stroke-linecap="round"/>
+  <circle cx="243" cy="258" r="94" fill="#D8AF62"/>
+  <text x="116" y="1090" fill="#14382E" font-family="Avenir, Arial, sans-serif" font-size="46" font-weight="700">Waterfall Plaza</text>
+  <text x="116" y="1142" fill="#617168" font-family="Avenir, Arial, sans-serif" font-size="26">Cooling visual anchor for the water zone</text>
+  <defs>
+    <linearGradient id="paint0_linear_5_2" x1="600" y1="0" x2="600" y2="1200" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F9F7F1"/>
+      <stop offset="1" stop-color="#E4F1EA"/>
+    </linearGradient>
+  </defs>
+</svg>

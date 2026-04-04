@@ -1,0 +1,141 @@
+@import "../styles/theme.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Avenir Next", "Segoe UI", sans-serif;
+    --font-display: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Avenir Next", "Segoe UI", sans-serif;
+    --ink-950: #0f1722;
+    --ink-900: #182534;
+    --ink-800: #26384d;
+    --text-100: #101820;
+    --text-300: rgba(16, 24, 32, 0.74);
+    --text-500: rgba(16, 24, 32, 0.46);
+    --line-soft: rgba(16, 24, 32, 0.1);
+    --water-400: #59d0ff;
+    --water-500: #2884ff;
+    --water-700: #0f4ea0;
+    --thrill-500: #ff7a18;
+    --family-400: #ffe08d;
+    --family-600: #ffb347;
+    --panel: rgba(255, 255, 255, 0.76);
+    --panel-strong: rgba(255, 255, 255, 0.94);
+    --scene-top: #fbfcfd;
+    --scene-bottom: #eef3f7;
+    --section-gap: clamp(5rem, 9vw, 9rem);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: auto;
+    background: var(--scene-top);
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background:
+      radial-gradient(circle at top, rgba(89, 208, 255, 0.1), transparent 26%),
+      radial-gradient(circle at 84% 12%, rgba(255, 255, 255, 0.9), transparent 22%),
+      linear-gradient(180deg, var(--scene-top) 0%, var(--scene-bottom) 100%);
+    color: var(--text-100);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01" on, "cv01" on, "cv11" on;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body[data-scroll-locked="true"] {
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  img,
+  video,
+  canvas {
+    display: block;
+    max-width: 100%;
+  }
+
+  ::selection {
+    background: rgba(89, 208, 255, 0.3);
+    color: white;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-[1440px] px-5 md:px-8 lg:px-12;
+  }
+
+  .section-padding {
+    padding-top: var(--section-gap);
+    padding-bottom: var(--section-gap);
+  }
+
+  .glass-panel {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(252, 253, 255, 0.76));
+    border: 1px solid rgba(16, 24, 32, 0.08);
+    box-shadow:
+      0 18px 48px rgba(15, 23, 34, 0.08),
+      0 2px 8px rgba(15, 23, 34, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(22px);
+  }
+
+  .eyebrow {
+    @apply text-[10px] font-semibold uppercase tracking-[0.34em];
+    color: rgba(16, 24, 32, 0.48);
+  }
+
+  .headline-xl {
+    @apply text-5xl leading-[0.92] md:text-7xl xl:text-[6.4rem];
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.055em;
+  }
+
+  .headline-lg {
+    @apply text-4xl leading-[0.95] md:text-6xl;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.05em;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .mask-fade {
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  }
+
+  .perspective-1800 {
+    perspective: 1800px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+}

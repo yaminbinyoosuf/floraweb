@@ -1,0 +1,14 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#EEF2ED"/>
+  <rect width="1200" height="900" fill="url(#paint0_linear_14_2)"/>
+  <path d="M166 649C265 560 385 515 527 515C673 515 812 574 945 692L893 749C789 651 668 602 529 602C409 602 308 639 226 713L166 649Z" fill="#F8F8F3"/>
+  <path d="M190 703C286 628 396 591 520 591C650 591 785 642 923 744V813H190V703Z" fill="#7FD5E4"/>
+  <circle cx="968" cy="199" r="111" fill="#D8AF62"/>
+  <text x="83" y="813" fill="#14372E" font-family="Avenir, Arial, sans-serif" font-size="50" font-weight="700">Family Pool</text>
+  <defs>
+    <linearGradient id="paint0_linear_14_2" x1="600" y1="0" x2="600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7F4ED"/>
+      <stop offset="1" stop-color="#E2F0EA"/>
+    </linearGradient>
+  </defs>
+</svg>

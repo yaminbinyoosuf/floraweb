@@ -1,0 +1,17 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1200" fill="#F4F0E8"/>
+  <rect width="1200" height="1200" fill="url(#paint0_linear_2_2)"/>
+  <ellipse cx="600" cy="895" rx="448" ry="196" fill="#D9F6FB"/>
+  <ellipse cx="561" cy="950" rx="351" ry="123" fill="#82D3E2"/>
+  <path d="M232 584C313 480 427 428 576 428C725 428 849 494 948 628L883 684C801 571 700 515 579 515C461 515 374 556 317 640L232 584Z" fill="#FCFBF8"/>
+  <path d="M326 650C404 566 496 524 601 524C711 524 801 570 872 662L798 714C748 653 682 622 601 622C520 622 446 657 379 727L326 650Z" fill="#1D6855"/>
+  <circle cx="263" cy="250" r="122" fill="#D5B273"/>
+  <text x="120" y="1088" fill="#173A31" font-family="Avenir, Arial, sans-serif" font-size="46" font-weight="700">Family Pool</text>
+  <text x="120" y="1142" fill="#5E6C64" font-family="Avenir, Arial, sans-serif" font-size="26">Open space for slower, shared moments</text>
+  <defs>
+    <linearGradient id="paint0_linear_2_2" x1="600" y1="0" x2="600" y2="1200" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF8F0"/>
+      <stop offset="1" stop-color="#E5F3EE"/>
+    </linearGradient>
+  </defs>
+</svg>

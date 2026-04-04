@@ -1,0 +1,14 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#F7F5EF"/>
+  <rect width="1200" height="900" fill="url(#paint0_linear_12_2)"/>
+  <path d="M116 703C251 585 362 517 450 499C565 474 687 507 817 596C902 654 995 706 1094 752" stroke="#7FD5E4" stroke-width="74" stroke-linecap="round"/>
+  <path d="M94 752C232 635 346 571 436 559C534 547 651 590 787 689" stroke="#1A5E4A" stroke-width="28" stroke-linecap="round"/>
+  <circle cx="905" cy="196" r="104" fill="#D8AF62"/>
+  <text x="86" y="812" fill="#14372E" font-family="Avenir, Arial, sans-serif" font-size="50" font-weight="700">Rapid River</text>
+  <defs>
+    <linearGradient id="paint0_linear_12_2" x1="600" y1="0" x2="600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FDF9F2"/>
+      <stop offset="1" stop-color="#E6F2ED"/>
+    </linearGradient>
+  </defs>
+</svg>

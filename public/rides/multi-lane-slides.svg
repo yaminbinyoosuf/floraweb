@@ -1,0 +1,16 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#0F231C"/>
+  <rect width="1200" height="900" fill="url(#paint0_linear_15_2)"/>
+  <path d="M325 202V686" stroke="#F8F8F4" stroke-width="42" stroke-linecap="round"/>
+  <path d="M491 202V686" stroke="#7FD5E4" stroke-width="42" stroke-linecap="round"/>
+  <path d="M657 202V686" stroke="#F8F8F4" stroke-width="42" stroke-linecap="round"/>
+  <path d="M823 202V686" stroke="#7FD5E4" stroke-width="42" stroke-linecap="round"/>
+  <circle cx="956" cy="169" r="105" fill="#D8AF62"/>
+  <text x="83" y="806" fill="#F8F8F4" font-family="Avenir, Arial, sans-serif" font-size="50" font-weight="700">Multi Lane Slides</text>
+  <defs>
+    <linearGradient id="paint0_linear_15_2" x1="600" y1="0" x2="600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#173F32"/>
+      <stop offset="1" stop-color="#0B1F18"/>
+    </linearGradient>
+  </defs>
+</svg>

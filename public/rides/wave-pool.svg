@@ -1,0 +1,14 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#F8F6F0"/>
+  <rect width="1200" height="900" fill="url(#paint0_linear_10_2)"/>
+  <path d="M121 633C248 549 371 508 490 508C629 508 766 561 901 668C979 731 1078 772 1200 791V900H121V633Z" fill="#CDEFF6"/>
+  <path d="M0 704C140 647 264 619 373 619C499 619 648 670 819 771C954 851 1081 894 1200 900H0V704Z" fill="#7FD5E4"/>
+  <circle cx="211" cy="188" r="105" fill="#D8AF62"/>
+  <text x="82" y="803" fill="#14372E" font-family="Avenir, Arial, sans-serif" font-size="50" font-weight="700">Wave Pool</text>
+  <defs>
+    <linearGradient id="paint0_linear_10_2" x1="600" y1="0" x2="600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF9F0"/>
+      <stop offset="1" stop-color="#E5F1ED"/>
+    </linearGradient>
+  </defs>
+</svg>

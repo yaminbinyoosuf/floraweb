@@ -1,0 +1,14 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#10211B"/>
+  <rect width="1200" height="900" fill="url(#paint0_linear_18_2)"/>
+  <path d="M599 230V688" stroke="#F8F8F4" stroke-width="34" stroke-linecap="round"/>
+  <circle cx="599" cy="230" r="122" fill="#D8AF62"/>
+  <path d="M397 385C471 340 538 318 599 318C660 318 727 340 801 385" stroke="#7FD5E4" stroke-width="32" stroke-linecap="round"/>
+  <text x="87" y="801" fill="#F8F8F4" font-family="Avenir, Arial, sans-serif" font-size="50" font-weight="700">Sky Spin</text>
+  <defs>
+    <linearGradient id="paint0_linear_18_2" x1="600" y1="0" x2="600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#153B30"/>
+      <stop offset="1" stop-color="#0B1F18"/>
+    </linearGradient>
+  </defs>
+</svg>

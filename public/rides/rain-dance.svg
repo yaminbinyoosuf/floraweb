@@ -1,0 +1,16 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" fill="#12251E"/>
+  <rect width="1200" height="900" fill="url(#paint0_linear_11_2)"/>
+  <circle cx="315" cy="222" r="136" fill="#D8AF62"/>
+  <path d="M355 182V491" stroke="#F8F8F4" stroke-width="24" stroke-linecap="round" stroke-dasharray="1 46"/>
+  <path d="M548 109V532" stroke="#7FD5E4" stroke-width="28" stroke-linecap="round" stroke-dasharray="1 40"/>
+  <path d="M740 176V564" stroke="#F8F8F4" stroke-width="22" stroke-linecap="round" stroke-dasharray="1 48"/>
+  <path d="M932 133V495" stroke="#7FD5E4" stroke-width="28" stroke-linecap="round" stroke-dasharray="1 42"/>
+  <text x="85" y="802" fill="#F8F8F4" font-family="Avenir, Arial, sans-serif" font-size="50" font-weight="700">Rain Dance</text>
+  <defs>
+    <linearGradient id="paint0_linear_11_2" x1="600" y1="0" x2="600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#173D31"/>
+      <stop offset="1" stop-color="#0B1F18"/>
+    </linearGradient>
+  </defs>
+</svg>

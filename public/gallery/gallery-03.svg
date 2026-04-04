@@ -1,0 +1,16 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1200" fill="#0D1B17"/>
+  <rect width="1200" height="1200" fill="url(#paint0_linear_3_2)"/>
+  <path d="M353 922L520 282H681L849 922H353Z" fill="#F7F6F1"/>
+  <path d="M443 922L570 384H629L758 922H443Z" fill="#89DCEA"/>
+  <path d="M265 986H935" stroke="#F7F6F1" stroke-width="20" stroke-linecap="round"/>
+  <circle cx="929" cy="226" r="109" fill="#DDB46F"/>
+  <text x="118" y="1110" fill="#F7F6F1" font-family="Avenir, Arial, sans-serif" font-size="46" font-weight="700">Slide Tower</text>
+  <text x="118" y="1160" fill="#C7D2CD" font-family="Avenir, Arial, sans-serif" font-size="26">Vertical landmark with a cleaner modern finish</text>
+  <defs>
+    <linearGradient id="paint0_linear_3_2" x1="600" y1="0" x2="600" y2="1200" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#153B30"/>
+      <stop offset="1" stop-color="#0B1F18"/>
+    </linearGradient>
+  </defs>
+</svg>
