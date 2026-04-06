@@ -3,117 +3,151 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui";
-import {
-  aboutExperience,
-  destinationCopy,
-  editorialPanels,
-  featureHighlights,
-} from "@/lib/data";
+import { editorialPanels, featureHighlights } from "@/lib/data";
+import { smoothEase } from "@/lib/motion";
 
 export function BrandStorySection() {
   return (
-    <section className="section-padding relative">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.05),transparent_28%)]" />
-      <div className="shell relative">
-        <SectionHeading
-          eyebrow="Park Narrative"
-          title="The Sound of Grandeur. A Park of Pride."
-          text="An unforgettable trip experience — where fun comes alive."
-        />
+    <>
+      {/* Main narrative — cream background */}
+      <section className="section-padding relative overflow-hidden" style={{ background: "#FFF8F0" }}>
+        <div className="shell relative">
+          <SectionHeading
+            eyebrow="Park Narrative"
+            title="The Sound of Grandeur. A Park of Pride."
+            text="An unforgettable trip experience — where fun comes alive every single day."
+            variant="light"
+          />
 
-        <div className="mt-12 grid gap-8">
-          {editorialPanels.map((panel, index) => (
-            <motion.article
-              key={panel.title}
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: index * 0.06 }}
-              className="premium-border overflow-hidden rounded-[2rem] p-[1px]"
-            >
-              <div className="glass-panel grid overflow-hidden rounded-[2rem] lg:grid-cols-[0.85fr_1.15fr]">
-                <div className="relative min-h-[280px]">
-                  <Image
-                    src={panel.image}
-                    alt={panel.title}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 40vw"
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_20%,rgba(4,7,13,0.65)_100%)]" />
-                </div>
-                <div className="p-8 md:p-10">
-                  <p className="eyebrow">{panel.eyebrow}</p>
-                  <h3 className="mt-5 text-3xl font-semibold leading-tight text-[var(--text-100)] md:text-4xl">
-                    {panel.title}
-                  </h3>
-                  <p className="mt-6 max-w-3xl text-base leading-8 text-[var(--text-300)]">
-                    {panel.text}
-                  </p>
-                </div>
-              </div>
-            </motion.article>
-          ))}
-        </div>
-
-        <div className="mt-10 grid gap-8 xl:grid-cols-[1.1fr_0.9fr]">
-          <motion.article
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.65 }}
-            className="glass-panel premium-border rounded-[2rem] p-8 md:p-10"
-          >
-            <p className="eyebrow">Family Fun</p>
-            <h3 className="mt-5 text-3xl font-semibold tracking-[-0.04em] text-[var(--text-100)] md:text-5xl">
-              {aboutExperience.title}
-            </h3>
-            <p className="mt-4 text-sm uppercase tracking-[0.22em] text-[var(--text-500)]">
-              {aboutExperience.subtitle}
-            </p>
-            <div className="mt-8 space-y-5">
-              {aboutExperience.paragraphs.map((paragraph) => (
-                <p key={paragraph} className="text-base leading-8 text-[var(--text-300)]">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          </motion.article>
-
-          <motion.article
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.65, delay: 0.06 }}
-            className="glass-panel premium-border rounded-[2rem] p-8 md:p-10"
-          >
-            <p className="eyebrow">Destination</p>
-            <h3 className="mt-5 text-3xl font-semibold tracking-[-0.04em] text-[var(--text-100)] md:text-4xl">
-              {destinationCopy.title}
-            </h3>
-            <p className="mt-4 text-sm uppercase tracking-[0.22em] text-[var(--text-500)]">
-              {destinationCopy.subtitle}
-            </p>
-            <p className="mt-8 text-base leading-8 text-[var(--text-300)]">
-              {destinationCopy.text}
-            </p>
-            <p className="mt-6 text-base leading-8 text-[var(--text-300)]">
-              {destinationCopy.closing}
-            </p>
-
-            <div className="mt-8 grid gap-3">
-              {featureHighlights.map((item) => (
-                <div
-                  key={item}
-                  className="rounded-[1rem] border border-[rgba(16,24,32,0.08)] bg-white/72 px-4 py-3 text-sm text-[var(--text-300)] shadow-[0_10px_24px_rgba(15,23,34,0.04)]"
+          {/* Editorial panels — alternating layout */}
+          <div className="mt-16 flex flex-col gap-20">
+            {editorialPanels.map((panel, index) => {
+              const isReversed = index % 2 === 1;
+              return (
+                <motion.article
+                  key={panel.title}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.8, ease: smoothEase }}
+                  className={`grid items-center gap-12 lg:grid-cols-2 ${isReversed ? "lg:[direction:rtl]" : ""}`}
                 >
-                  {item}
-                </div>
-              ))}
-            </div>
-          </motion.article>
+                  {/* Image */}
+                  <div className={`relative overflow-hidden rounded-2xl ${isReversed ? "lg:[direction:ltr]" : ""}`} style={{ aspectRatio: "4/3" }}>
+                    <Image
+                      src={panel.image}
+                      alt={panel.title}
+                      fill
+                      sizes="(max-width:1024px) 100vw, 50vw"
+                      className="object-cover transition duration-700 hover:scale-[1.03]"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(160deg,transparent_50%,rgba(11,24,34,0.4)_100%)]" />
+                  </div>
+
+                  {/* Text */}
+                  <div className={isReversed ? "lg:[direction:ltr]" : ""}>
+                    <p
+                      className="text-[#D4780A] uppercase"
+                      style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", fontFamily: "var(--font-sans)" }}
+                    >
+                      {panel.eyebrow}
+                    </p>
+                    <div className="mt-3 h-0.5 w-10 rounded-full" style={{ background: "#D4780A" }} />
+                    <h3
+                      className="mt-5 font-display font-black text-balance"
+                      style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)", lineHeight: 1.1, letterSpacing: "-0.02em", color: "#0B1822" }}
+                    >
+                      {panel.title}
+                    </h3>
+                    <p
+                      className="mt-5"
+                      style={{ fontSize: "1rem", lineHeight: "1.88", color: "rgba(11,24,34,0.62)", fontFamily: "var(--font-sans)" }}
+                    >
+                      {panel.text}
+                    </p>
+                  </div>
+                </motion.article>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Family Fun feature card — dark navy */}
+      <section
+        className="relative overflow-hidden noise"
+        style={{
+          background:
+            "radial-gradient(ellipse at 20% 50%, rgba(212,120,10,0.12) 0%, transparent 50%), " +
+            "radial-gradient(ellipse at 80% 30%, rgba(27,184,232,0.08) 0%, transparent 40%), " +
+            "#0B1822",
+          paddingTop: "clamp(3rem, 6vw, 6rem)",
+          paddingBottom: "clamp(3rem, 6vw, 6rem)",
+        }}
+      >
+        <div className="shell">
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: smoothEase }}
+            className="overflow-hidden rounded-2xl"
+            style={{ border: "1px solid rgba(255,255,255,0.08)", background: "rgba(15,36,48,0.85)" }}
+          >
+            <div className="grid gap-10 p-10 md:p-14 lg:grid-cols-[1fr_1fr]">
+              {/* Left */}
+              <div>
+                <p
+                  className="uppercase text-[#D4780A]"
+                  style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.2em", fontFamily: "var(--font-sans)" }}
+                >
+                  Family Fun
+                </p>
+                <h2
+                  className="mt-4 font-display font-black text-white text-balance"
+                  style={{ fontSize: "clamp(1.75rem, 4vw, 3rem)", lineHeight: 1.05, letterSpacing: "-0.025em" }}
+                >
+                  Your Perfect Destination for Family Fun and Adventure!
+                </h2>
+                <p
+                  className="mt-4 text-white/45 uppercase"
+                  style={{ fontSize: "11px", letterSpacing: "0.2em", fontFamily: "var(--font-sans)", fontWeight: 500 }}
+                >
+                  You will remember this wonderful holiday!
+                </p>
+              </div>
+
+              {/* Right — feature bento grid */}
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {featureHighlights.map((item, i) => (
+                  <motion.div
+                    key={item}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.5, delay: i * 0.06, ease: smoothEase }}
+                    className="flex items-start gap-3 rounded-xl p-4 transition"
+                    style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}
+                  >
+                    <span
+                      className="mt-0.5 flex-shrink-0 font-bold"
+                      style={{ color: "#D4780A", fontSize: "14px" }}
+                    >
+                      ✓
+                    </span>
+                    <span
+                      className="text-white/70"
+                      style={{ fontSize: "0.9rem", fontFamily: "var(--font-sans)", lineHeight: "1.6" }}
+                    >
+                      {item}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </>
   );
 }

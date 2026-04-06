@@ -1,76 +1,77 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import { galleryItems } from "@/lib/data";
 import { SectionHeading } from "@/components/ui";
 import { smoothEase } from "@/lib/motion";
 
 export function GallerySection() {
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const parallax = useSpring(useTransform(scrollYProgress, [0, 1], [40, -40]), {
-    stiffness: 80,
-    damping: 22,
-    mass: 0.9,
-  });
-
   return (
-    <section id="gallery" ref={sectionRef} className="section-padding relative">
-      <motion.div
-        className="absolute inset-x-0 top-20 h-64 bg-cyan-400/10 blur-3xl"
-        style={{ y: parallax }}
-        aria-hidden
-      />
-
+    <section
+      id="gallery"
+      className="section-padding relative overflow-hidden"
+      style={{ background: "#FFF8F0" }}
+    >
       <div className="shell relative">
         <SectionHeading
           eyebrow="Gallery"
           title="Moments cut like stills from a moving park film."
-          text="A cinematic mosaic of splash zones, ride silhouettes, and park atmosphere that sharpens as you scroll."
+          text="A cinematic mosaic of splash zones, ride silhouettes, and park atmosphere."
           align="center"
+          variant="light"
         />
 
-        <div className="mt-12 grid auto-rows-[240px] gap-5 md:grid-cols-3">
-          {galleryItems.map((item, index) => (
-            <motion.figure
-              key={item.src}
-              initial={{ opacity: 0, y: 26, scale: 0.96 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.8, delay: index * 0.035, ease: smoothEase }}
-              className={`glass-panel premium-border group relative overflow-hidden rounded-[1.8rem] ${item.span}`}
-              whileHover={{ y: -8 }}
-            >
-              <motion.div
-                className="absolute inset-0"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 1.1, ease: smoothEase }}
+        {/* Masonry grid using CSS columns */}
+        <style>{`
+          #gallery-masonry { columns: 1; column-gap: 1rem; }
+          @media (min-width: 640px) { #gallery-masonry { columns: 2; } }
+          @media (min-width: 1024px) { #gallery-masonry { columns: 3; } }
+        `}</style>
+        <div className="mt-14">
+          <div id="gallery-masonry">
+            {galleryItems.map((item, index) => (
+              <motion.figure
+                key={item.src}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.7, delay: index * 0.04, ease: smoothEase }}
+                className="group relative mb-4 cursor-pointer overflow-hidden break-inside-avoid rounded-xl"
+                style={{ border: "1px solid rgba(11,24,34,0.08)" }}
               >
-                <Image
-                  src={item.src}
-                  alt={item.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                  className="object-cover transition duration-700"
-                />
-              </motion.div>
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_34%,rgba(9,17,28,0.56)_100%)]" />
-              <motion.figcaption
-                initial={{ opacity: 0.72, y: 8 }}
-                whileHover={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: smoothEase }}
-                className="absolute bottom-0 left-0 right-0 p-5 text-[11px] uppercase tracking-[0.24em] text-white/88"
-              >
-                {item.title}
-              </motion.figcaption>
-            </motion.figure>
-          ))}
+                <div className="relative overflow-hidden">
+                  <Image
+                    src={item.src}
+                    alt={item.title}
+                    width={600}
+                    height={index % 3 === 0 ? 500 : 380}
+                    className="w-full object-cover transition duration-700 group-hover:scale-[1.04]"
+                    style={{ display: "block" }}
+                  />
+                  {/* Orange border glow on hover */}
+                  <div
+                    className="absolute inset-0 opacity-0 transition-opacity duration-400 group-hover:opacity-100 rounded-xl pointer-events-none"
+                    style={{ boxShadow: "inset 0 0 0 2px rgba(212,120,10,0.5)" }}
+                  />
+                  {/* Caption overlay */}
+                  <figcaption
+                    className="absolute inset-x-0 bottom-0 translate-y-2 opacity-0 p-5 transition-all duration-400 group-hover:translate-y-0 group-hover:opacity-100"
+                    style={{
+                      background: "linear-gradient(0deg, rgba(11,24,34,0.9) 0%, transparent 100%)",
+                    }}
+                  >
+                    <span
+                      className="text-white"
+                      style={{ fontSize: "11px", fontWeight: 500, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "var(--font-sans)" }}
+                    >
+                      {item.title}
+                    </span>
+                  </figcaption>
+                </div>
+              </motion.figure>
+            ))}
+          </div>
         </div>
       </div>
     </section>

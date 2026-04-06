@@ -1,47 +1,222 @@
 import Image from "next/image";
-import { socialLinks } from "@/lib/data";
+import { socialLinks, WHATSAPP_LINK } from "@/lib/data";
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 py-10">
-      <div className="shell flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
-        <div className="max-w-md">
-          <div className="flex items-center gap-4">
-          <div className="relative h-12 w-12 overflow-hidden rounded-full border border-white/10 bg-white/[0.04]">
-            <Image
-              src="/flora-fantasia-logo.jpeg"
-              alt="Flora Fantasia logo"
-              fill
-              sizes="48px"
-              className="object-cover"
-            />
-          </div>
-          <div>
-            <p className="text-lg font-semibold text-[var(--text-100)]">Flora Fantasia</p>
-            <p className="text-sm text-[var(--text-500)]">
-              Malabar’s Own Amusement Park
+    <footer
+      className="relative overflow-hidden noise"
+      style={{ background: "#070F16", borderTop: "1px solid rgba(255,255,255,0.06)" }}
+    >
+      {/* Top glow line */}
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-px"
+        style={{ background: "linear-gradient(90deg, transparent, rgba(212,120,10,0.5), rgba(27,184,232,0.4), transparent)" }}
+      />
+
+      {/* Ambient */}
+      <div
+        className="pointer-events-none absolute left-1/4 top-0 h-56 w-56 rounded-full blur-3xl"
+        style={{ background: "radial-gradient(circle, rgba(212,120,10,0.07), transparent 60%)" }}
+      />
+      <div
+        className="pointer-events-none absolute right-1/4 bottom-0 h-40 w-40 rounded-full blur-3xl"
+        style={{ background: "radial-gradient(circle, rgba(27,184,232,0.05), transparent 60%)" }}
+      />
+
+      <div className="shell relative py-16 md:py-20">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+
+          {/* Brand */}
+          <div className="max-w-sm lg:col-span-1">
+            <div className="flex items-center gap-3.5">
+              <div
+                className="relative h-10 w-10 overflow-hidden rounded-full"
+                style={{ border: "1px solid rgba(255,255,255,0.15)", boxShadow: "0 4px 16px rgba(212,120,10,0.3)" }}
+              >
+                <Image src="/flora-fantasia-logo.jpeg" alt="Flora Fantasia logo" fill sizes="40px" className="object-cover" />
+              </div>
+              <div>
+                <p
+                  className="font-display font-bold text-white"
+                  style={{ fontSize: "18px", letterSpacing: "-0.02em" }}
+                >
+                  Flora Fantasia
+                </p>
+                <p
+                  className="text-white/35"
+                  style={{ fontSize: "0.72rem", fontFamily: "var(--font-sans)" }}
+                >
+                  Malabar&apos;s Own Amusement Park
+                </p>
+              </div>
+            </div>
+
+            <p
+              className="mt-5 text-white/38"
+              style={{ fontSize: "0.88rem", lineHeight: "1.85", fontFamily: "var(--font-sans)" }}
+            >
+              Malabar&apos;s own amusement park — 13 years of joy, water, thrill, and
+              family memories in the heart of Valancheri, Malappuram.
             </p>
+
+            {/* Social icons */}
+            <div className="mt-6 flex gap-2.5">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  title={link.label}
+                  className="flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200"
+                  style={{
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    background: "rgba(255,255,255,0.04)",
+                    color: "rgba(255,255,255,0.75)",
+                    fontSize: "11px",
+                    fontWeight: 700,
+                  }}
+                  onMouseEnter={e => {
+                    const el = e.currentTarget;
+                    el.style.borderColor = "rgba(212,120,10,0.5)";
+                    el.style.background = "rgba(212,120,10,0.12)";
+                    el.style.color = "#D4780A";
+                  }}
+                  onMouseLeave={e => {
+                    const el = e.currentTarget;
+                    el.style.borderColor = "rgba(255,255,255,0.08)";
+                    el.style.background = "rgba(255,255,255,0.04)";
+                    el.style.color = "rgba(255,255,255,0.40)";
+                  }}
+                >
+                  {link.label === "Instagram" && (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                  )}
+                  {link.label === "Facebook" && (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                  )}
+                  {link.label === "YouTube" && (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+                    </svg>
+                  )}
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
-          <p className="mt-5 text-sm leading-7 text-[var(--text-300)]">
-            Flora Fantasia is one of Malappuram’s most loved leisure destinations,
-            built for family-friendly fun, thrill rides, water experiences, and
-            unforgettable holiday memories.
-          </p>
+
+          {/* Explore */}
+          <div>
+            <p
+              className="mb-5 uppercase text-white/28"
+              style={{ fontSize: "10px", fontWeight: 500, letterSpacing: "0.28em", fontFamily: "var(--font-sans)" }}
+            >
+              Explore
+            </p>
+            <div className="flex flex-col gap-3">
+              {[
+                { label: "Park Zones",  href: "#zones" },
+                { label: "All Rides",   href: "#rides" },
+                { label: "Gallery",     href: "#gallery" },
+                { label: "Directions",  href: "#location" },
+              ].map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="group flex items-center gap-2.5 transition-colors duration-200"
+                  style={{ fontSize: "0.88rem", fontWeight: 500, color: "rgba(255,255,255,0.38)", fontFamily: "var(--font-sans)" }}
+                  onMouseEnter={e => { e.currentTarget.style.color = "rgba(255,255,255,0.85)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.color = "rgba(255,255,255,0.38)"; }}
+                >
+                  <span className="h-px w-0 rounded-full bg-[#D4780A] opacity-0 transition-all duration-200 group-hover:w-4 group-hover:opacity-100" />
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Connect */}
+          <div>
+            <p
+              className="mb-5 uppercase text-white/28"
+              style={{ fontSize: "10px", fontWeight: 500, letterSpacing: "0.28em", fontFamily: "var(--font-sans)" }}
+            >
+              Connect
+            </p>
+            <div className="flex flex-col gap-3">
+              {[
+                { label: "+91 97452 39003",             href: "tel:+919745239003", external: false },
+                { label: "florafantasiapark@gmail.com", href: "mailto:florafantasiapark@gmail.com", external: false },
+                { label: "WhatsApp Booking",            href: WHATSAPP_LINK, external: true },
+              ].map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target={link.external ? "_blank" : undefined}
+                  rel={link.external ? "noreferrer" : undefined}
+                  className="transition-colors duration-200"
+                  style={{ fontSize: "0.88rem", fontWeight: 500, color: "rgba(255,255,255,0.38)", fontFamily: "var(--font-sans)" }}
+                  onMouseEnter={e => { e.currentTarget.style.color = "rgba(255,255,255,0.85)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.color = "rgba(255,255,255,0.38)"; }}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Visit */}
+          <div>
+            <p
+              className="mb-5 uppercase text-white/28"
+              style={{ fontSize: "10px", fontWeight: 500, letterSpacing: "0.28em", fontFamily: "var(--font-sans)" }}
+            >
+              Visit
+            </p>
+            <div className="flex flex-col gap-2">
+              <p
+                className="text-white/55 font-medium"
+                style={{ fontSize: "0.88rem", fontFamily: "var(--font-sans)" }}
+              >
+                Mon – Sun
+              </p>
+              <p
+                className="font-bold"
+                style={{ fontSize: "0.92rem", color: "#D4780A", fontFamily: "var(--font-sans)" }}
+              >
+                11 AM – 6 PM
+              </p>
+              <p
+                className="mt-3 text-white/40"
+                style={{ fontSize: "0.82rem", lineHeight: "1.72", fontFamily: "var(--font-sans)" }}
+              >
+                Vengad, Valancheri,<br />Malappuram, Kerala
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div className="flex flex-wrap gap-5 text-sm text-[var(--text-300)]">
-          {socialLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="noreferrer"
-              className="transition hover:text-[var(--text-100)]"
-            >
-              {link.label}
-            </a>
-          ))}
+        {/* Bottom bar */}
+        <div
+          className="mt-14 flex flex-col items-start justify-between gap-4 border-t pt-8 md:flex-row md:items-center"
+          style={{ borderColor: "rgba(255,255,255,0.06)" }}
+        >
+          <p
+            className="text-white/22"
+            style={{ fontSize: "0.76rem", fontFamily: "var(--font-sans)" }}
+          >
+            © {new Date().getFullYear()} Flora Fantasia Amusement Park. All rights reserved.
+          </p>
+          <p
+            className="text-white/16"
+            style={{ fontSize: "0.76rem", fontFamily: "var(--font-sans)" }}
+          >
+            Valancheri, Malappuram, Kerala, India
+          </p>
         </div>
       </div>
     </footer>

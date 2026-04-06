@@ -3,116 +3,244 @@
 import Image from "next/image";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { AtmosphereCanvas } from "@/components/atmosphere-canvas";
-import { LiquidButton, StatPill } from "@/components/ui";
-import { HERO_IMAGE, WHATSAPP_LINK } from "@/lib/data";
+import { HERO_IMAGE, WHATSAPP_LINK, parkStats } from "@/lib/data";
 import { smoothEase, springGentle } from "@/lib/motion";
+
+const stagger = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1, delayChildren: 0.15 } },
+};
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  show:   { opacity: 1, y: 0, transition: { duration: 0.9, ease: smoothEase } },
+};
 
 export function HeroSection({ onExplore }: { onExplore: () => void }) {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-  const imageY = useSpring(useTransform(scrollYProgress, [0, 1], [0, 120]), springGentle);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
   const contentY = useSpring(useTransform(scrollYProgress, [0, 1], [0, 60]), springGentle);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0.55]);
-  const glowLeftY = useTransform(scrollYProgress, [0, 1], [0, -50]);
-  const glowRightY = useTransform(scrollYProgress, [0, 1], [0, 70]);
+  const bgY      = useSpring(useTransform(scrollYProgress, [0, 1], [0, 120]), springGentle);
+  const opacity  = useTransform(scrollYProgress, [0, 0.75], [1, 0.5]);
 
   return (
-    <section ref={sectionRef} id="hero" className="relative min-h-screen overflow-hidden">
-      <motion.div className="absolute inset-0 scale-[1.04]" style={{ y: imageY }}>
-        <motion.div
-          className="relative h-full w-full"
-          animate={{ scale: [1, 1.08, 1.02] }}
-          transition={{ duration: 16, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-        >
-          <Image
-            src={HERO_IMAGE}
-            alt="Aerial view of Flora Fantasia Amusement Park"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-        </motion.div>
-        <div className="video-vignette absolute inset-0" />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(9,17,28,0.44)_8%,rgba(9,17,28,0.08)_52%,rgba(9,17,28,0.34)_100%)]" />
+    <section
+      ref={sectionRef}
+      id="hero"
+      className="relative overflow-hidden"
+      style={{ minHeight: "100svh" }}
+    >
+      {/* ── Full-bleed background image with parallax ── */}
+      <motion.div
+        className="absolute inset-0"
+        style={{ y: bgY }}
+      >
+        <Image
+          src={HERO_IMAGE}
+          alt="Flora Fantasia Amusement Park aerial view"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center scale-[1.08]"
+        />
       </motion.div>
 
-      <div className="absolute inset-0">
-        <AtmosphereCanvas />
-        <motion.div
-          className="absolute left-[10%] top-[16%] h-56 w-56 rounded-full bg-cyan-400/10 blur-3xl"
-          animate={{ y: [0, -18, 0], x: [0, 16, 0] }}
-          transition={{ duration: 10, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-          style={{ y: glowLeftY }}
-        />
-        <motion.div
-          className="absolute bottom-[20%] right-[10%] h-64 w-64 rounded-full bg-orange-400/10 blur-3xl"
-          animate={{ y: [0, 22, 0], x: [0, -12, 0] }}
-          transition={{ duration: 12, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-          style={{ y: glowRightY }}
-        />
-      </div>
+      {/* ── Top gradient for nav readability ── */}
+      <div
+        className="absolute inset-x-0 top-0 h-40 z-[1] pointer-events-none"
+        style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 100%)" }}
+      />
 
+      {/* ── Dark overlay — left heavy so left-side text pops ── */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(105deg, rgba(11,24,34,0.92) 0%, rgba(11,24,34,0.78) 45%, rgba(11,24,34,0.45) 75%, rgba(11,24,34,0.30) 100%)",
+        }}
+      />
+      {/* Bottom fade to page bg */}
+      <div
+        className="absolute inset-x-0 bottom-0 h-40"
+        style={{ background: "linear-gradient(to top, #0B1822 0%, transparent 100%)" }}
+      />
+
+      {/* ── Content ── */}
       <motion.div
-        className="shell relative flex min-h-screen items-end pb-16 pt-28 md:items-center md:pb-24"
-        style={{ y: contentY, opacity: contentOpacity }}
+        className="shell relative flex min-h-screen flex-col justify-center pt-36 pb-20"
+        style={{ y: contentY, opacity }}
       >
-        <div className="grid w-full items-end gap-12 lg:grid-cols-[1.3fr_0.7fr]">
-          <motion.div
-            initial="hidden"
-            animate="show"
-            variants={{
-              hidden: {},
-              show: { transition: { staggerChildren: 0.08, delayChildren: 0.15 } },
-            }}
-            className="max-w-4xl"
-          >
-            <motion.p variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: smoothEase } } }} className="eyebrow">
-              Immersive Park Arrival
-            </motion.p>
-            <motion.p variants={{ hidden: { opacity: 0, y: 22 }, show: { opacity: 1, y: 0, transition: { duration: 0.9, ease: smoothEase } } }} className="mt-6 text-[11px] uppercase tracking-[0.28em] text-white/80 [text-shadow:0_8px_24px_rgba(0,0,0,0.24)] md:text-sm">
-              The Sound of Grandeur. A Park of Pride.
-            </motion.p>
-            <motion.h1 variants={{ hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 1, ease: smoothEase } } }} className="headline-xl mt-6 text-white text-balance [text-shadow:0_18px_46px_rgba(0,0,0,0.28)]">
-              Malabar’s Own Amusement Park
-            </motion.h1>
-            <motion.p variants={{ hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.95, ease: smoothEase } } }} className="mt-6 max-w-2xl text-lg leading-8 text-white/90 [text-shadow:0_10px_30px_rgba(0,0,0,0.24)] md:text-[1.35rem]">
-              An unforgettable trip experience — where fun comes alive.
-            </motion.p>
-            <motion.div variants={{ hidden: { opacity: 0, y: 26 }, show: { opacity: 1, y: 0, transition: { duration: 0.9, ease: smoothEase } } }} className="mt-10 flex flex-wrap gap-4">
-              <LiquidButton href={WHATSAPP_LINK}>Book via WhatsApp</LiquidButton>
-              <LiquidButton onClick={onExplore} variant="secondary">
-                Explore the Park
-              </LiquidButton>
-            </motion.div>
+        {/* Left-side text — max half width on desktop */}
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          animate="show"
+          className="flex flex-col max-w-2xl"
+        >
+          {/* Badges row */}
+          <motion.div variants={fadeUp} className="flex flex-wrap gap-3">
+            <span
+              className="inline-flex items-center gap-2 rounded-full px-4 py-2 backdrop-blur-sm"
+              style={{
+                border: "1px solid rgba(27,184,232,0.45)",
+                color: "#1BB8E8",
+                fontSize: "11px",
+                fontWeight: 500,
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+                fontFamily: "var(--font-sans)",
+              }}
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-[#1BB8E8] animate-pulse" />
+              Kerala, India · Malappuram
+            </span>
+
+            <span
+              className="inline-flex items-center gap-2 rounded-full px-4 py-2 backdrop-blur-sm"
+              style={{
+                background: "rgba(212,120,10,0.18)",
+                border: "1px solid rgba(212,120,10,0.4)",
+                color: "#F5A623",
+                fontSize: "11px",
+                fontWeight: 500,
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                fontFamily: "var(--font-sans)",
+              }}
+            >
+              Open Daily · 11 AM – 6 PM
+            </span>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.28, ease: smoothEase }}
-            className="zone-card premium-border rounded-[2.2rem] p-6 md:p-8"
-            whileHover={{ y: -6 }}
-          >
-            <p className="text-xs uppercase tracking-[0.36em] text-[var(--text-500)]">
-              Today’s Park Mood
-            </p>
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              <StatPill>13 Years Strong</StatPill>
-              <StatPill>Water Trails</StatPill>
-              <StatPill>Pulse Rides</StatPill>
-              <StatPill>Family Loops</StatPill>
-            </div>
-            <p className="mt-8 text-[15px] leading-7 text-[var(--text-300)]">
-              Scroll through a park story shaped by water thrills, family memories,
-              visitor trust, and one of Kerala’s most loved leisure destinations.
-            </p>
+          {/* Giant headline */}
+          <motion.div variants={fadeUp} className="mt-7">
+            <h1
+              className="font-display font-black uppercase"
+              style={{
+                fontSize: "clamp(3.8rem, 10vw, 9rem)",
+                lineHeight: 0.9,
+                letterSpacing: "-0.03em",
+              }}
+            >
+              <span className="text-white">MALABAR&apos;S</span>
+              <br />
+              <span className="text-white">OWN</span>
+              <br />
+              <span className="text-gradient-orange">AMUSEMENT PARK</span>
+            </h1>
           </motion.div>
-        </div>
+
+          {/* Sub-headline */}
+          <motion.p
+            variants={fadeUp}
+            className="mt-6 text-white/80"
+            style={{
+              fontSize: "clamp(1rem, 3vw, 1.4rem)",
+              fontWeight: 300,
+              fontFamily: "var(--font-sans)",
+            }}
+          >
+            Unleash Your Inner Child!
+          </motion.p>
+
+          {/* Body */}
+          <motion.p
+            variants={fadeUp}
+            className="mt-3 text-white/55"
+            style={{
+              fontSize: "1rem",
+              lineHeight: "1.8",
+              fontFamily: "var(--font-sans)",
+              maxWidth: "480px",
+            }}
+          >
+            Kerala&apos;s most spectacular family adventure park — water thrills,
+            thrill rides, aquarium wonders, and unforgettable memories.
+          </motion.p>
+
+          {/* CTA buttons */}
+          <motion.div variants={fadeUp} className="mt-9 flex flex-wrap gap-4">
+            <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2.5 rounded-full px-8 py-3.5 text-white transition-all duration-200 hover:brightness-110 hover:-translate-y-px"
+              style={{
+                background: "#D4780A",
+                fontSize: "14px",
+                fontWeight: 600,
+                letterSpacing: "0.04em",
+                fontFamily: "var(--font-sans)",
+                boxShadow: "0 6px 28px rgba(212,120,10,0.5)",
+              }}
+            >
+              Book Tickets Now
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                <path d="M2 7h10M7 2l5 5-5 5"/>
+              </svg>
+            </a>
+            <button
+              type="button"
+              onClick={onExplore}
+              className="flex items-center gap-2.5 rounded-full px-8 py-3.5 text-white transition-all duration-200 hover:bg-white/10"
+              style={{
+                border: "1px solid rgba(255,255,255,0.35)",
+                fontSize: "14px",
+                fontWeight: 600,
+                letterSpacing: "0.04em",
+                fontFamily: "var(--font-sans)",
+              }}
+            >
+              Explore the Park
+            </button>
+          </motion.div>
+        </motion.div>
+
+        {/* Stats bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.9, ease: smoothEase }}
+          className="mt-20 grid grid-cols-2 gap-x-10 gap-y-6 border-t pt-10 md:grid-cols-4"
+          style={{ borderColor: "rgba(255,255,255,0.12)", maxWidth: "680px" }}
+        >
+          {parkStats.map((stat) => (
+            <div key={stat.label} className="flex flex-col">
+              <span
+                className="font-display font-black text-gradient-orange"
+                style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.5rem)", lineHeight: 1, letterSpacing: "-0.02em" }}
+              >
+                {stat.value}
+              </span>
+              <span
+                className="mt-1.5 uppercase text-white/50"
+                style={{ fontSize: "10px", letterSpacing: "0.2em", fontFamily: "var(--font-sans)", fontWeight: 500 }}
+              >
+                {stat.label}
+              </span>
+            </div>
+          ))}
+        </motion.div>
+      </motion.div>
+
+      {/* Scroll hint */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.6, duration: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+      >
+        <span
+          className="text-white/30 uppercase"
+          style={{ fontSize: "9px", letterSpacing: "0.36em", fontFamily: "var(--font-sans)", fontWeight: 500 }}
+        >
+          Scroll
+        </span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+          className="h-8 w-px"
+          style={{ background: "linear-gradient(180deg, rgba(212,120,10,0.7), transparent)" }}
+        />
       </motion.div>
     </section>
   );

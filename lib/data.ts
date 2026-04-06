@@ -176,6 +176,15 @@ export const galleryItems = [
   { src: "/gallery-real/splash-raft.jpeg", title: "Splash landing", span: "" },
   { src: "/gallery-real/family-raft-corner.jpeg", title: "Family raft", span: "" },
   { src: "/gallery-real/green-slide-raft.jpeg", title: "Green slide ride", span: "" },
+  { src: "/gallery-real/pic1.JPG", title: "Park moments", span: "" },
+  { src: "/gallery-real/pic2.JPG", title: "Park moments", span: "" },
+  { src: "/gallery-real/pic3.JPG", title: "Park moments", span: "" },
+  { src: "/gallery-real/pic4.JPG", title: "Park moments", span: "" },
+  { src: "/gallery-real/pic5.jpg", title: "Park moments", span: "" },
+  { src: "/gallery-real/pic6.jpg", title: "Park moments", span: "" },
+  { src: "/gallery-real/pic7.JPG", title: "Park moments", span: "" },
+  { src: "/gallery-real/pic8.JPG", title: "Park moments", span: "" },
+  { src: "/gallery-real/pic9.JPG", title: "Park moments", span: "" },
 ];
 
 export const pricingTiers = [
@@ -211,6 +220,48 @@ export const socialLinks = [
     href: "https://www.youtube.com/@florafantasiaamusementpark",
   },
 ];
+
+export const parkStats = [
+  { value: "13+", label: "Years Running" },
+  { value: "40+", label: "Rides & Zones" },
+  { value: "#1", label: "Kerala Footfall" },
+  { value: "5M+", label: "Happy Visitors" },
+];
+
+export const testimonials = [
+  {
+    text: "Best amusement park in Kerala - hands down. We've been coming here for 6 years straight and it just keeps getting better. The water zone alone is worth every rupee.",
+    name: "Rahul M.",
+    location: "Kozhikode",
+  },
+  {
+    text: "Took our school group of 80 students here and everything was so well organized. The staff were incredibly helpful and the rides are maintained so well. Will definitely return.",
+    name: "Priya Teacher",
+    location: "Tirur, Malappuram",
+  },
+  {
+    text: "The aquarium section genuinely surprised us - we didn't expect it to be that good. Kids absolutely loved it. Flora Fantasia is the complete package for a family day out.",
+    name: "Santhosh K.",
+    location: "Manjeri",
+  },
+  {
+    text: "Came all the way from Thrissur for this. Totally worth the drive. The park is clean, the rides are exciting, and the food options are good too. The wave pool is fantastic.",
+    name: "Anitha V.",
+    location: "Thrissur",
+  },
+  {
+    text: "Our family trip here was one of our best holidays. My parents enjoyed the family zone while my kids went crazy on the water slides. Something for everyone - literally.",
+    name: "Mohammed F.",
+    location: "Malappuram",
+  },
+];
+
+export const footerCta = {
+  eyebrow: "Book Now",
+  title: "Make your holidays unforgettable.",
+  subtitle: "Flora Fantasia — Valancheri, Malappuram. Open daily 11am - 6pm.",
+  note: "Instant WhatsApp confirmation · No booking fee",
+};
 
 export const editorialPanels = [
   {

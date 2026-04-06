@@ -1,62 +1,134 @@
+/* ── PARK BG ─────────────────────────────────────────────── */
 .park-bg {
-  background:
-    radial-gradient(circle at 18% 10%, rgba(89, 208, 255, 0.1), transparent 0 24%),
-    radial-gradient(circle at 80% 12%, rgba(255, 255, 255, 0.86), transparent 0 22%),
-    linear-gradient(180deg, #fcfdff 0%, #f2f5f8 38%, #fafcff 100%);
+  background: #0B1822;
 }
 
+/* ── AURORA RING (portal glow) ────────────────────────────── */
 .aurora-ring {
   background:
-    radial-gradient(circle at center, rgba(89, 208, 255, 0.12), transparent 54%),
-    radial-gradient(circle at 65% 38%, rgba(255, 255, 255, 0.55), transparent 36%);
-  filter: blur(18px);
+    radial-gradient(circle at 45% 55%, rgba(212,120,10,0.40), transparent 52%),
+    radial-gradient(circle at 65% 35%, rgba(27,184,232,0.28), transparent 42%),
+    radial-gradient(circle at 30% 40%, rgba(245,200,66,0.18), transparent 36%);
+  filter: blur(24px);
 }
 
+/* ── ZONE CARD (dark glass) ───────────────────────────────── */
 .zone-card {
-  border-radius: 2rem;
-  border: 1px solid rgba(16, 24, 32, 0.08);
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(28px);
+  border-radius: 2.4rem;
+  border: 1px solid rgba(255,255,255,0.09);
+  background: rgba(11,24,34,0.82);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
   box-shadow:
-    0 20px 56px rgba(15, 23, 34, 0.08),
-    0 2px 8px rgba(15, 23, 34, 0.04);
+    0 32px 64px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.07);
 }
 
+/* ── PREMIUM BORDER ───────────────────────────────────────── */
 .premium-border {
   position: relative;
 }
-
 .premium-border::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(140deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.22));
-  box-shadow: none;
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
+  background: linear-gradient(
+    140deg,
+    rgba(212,120,10,0.60) 0%,
+    rgba(27,184,232,0.30) 40%,
+    rgba(255,255,255,0.06) 65%,
+    rgba(212,120,10,0.25) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
 }
 
-.video-vignette {
+/* ── DARK SECTION ─────────────────────────────────────────── */
+.dark-section {
   background:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.18), transparent 32%),
-    linear-gradient(180deg, rgba(9, 17, 28, 0.12) 0%, rgba(9, 17, 28, 0.22) 56%, rgba(9, 17, 28, 0.38) 100%);
+    radial-gradient(ellipse at 20% 60%, rgba(212,120,10,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(27,184,232,0.08) 0%, transparent 40%),
+    #0B1822;
+  color: white;
 }
 
+/* ── DOT GRID ─────────────────────────────────────────────── */
+.dot-pattern {
+  background-image: radial-gradient(rgba(255,255,255,0.10) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* ── GLOW CARD VARIANTS ───────────────────────────────────── */
+.glow-card-orange {
+  box-shadow: 0 0 0 1px rgba(212,120,10,0.35), 0 30px 60px rgba(0,0,0,0.5), 0 0 80px rgba(212,120,10,0.14);
+}
+.glow-card-blue {
+  box-shadow: 0 0 0 1px rgba(27,184,232,0.35), 0 30px 60px rgba(0,0,0,0.5), 0 0 80px rgba(27,184,232,0.14);
+}
+.glow-card-gold {
+  box-shadow: 0 0 0 1px rgba(245,200,66,0.35), 0 30px 60px rgba(0,0,0,0.5), 0 0 80px rgba(245,200,66,0.12);
+}
+
+/* Legacy aliases */
+.glow-card-ember { box-shadow: 0 0 0 1px rgba(212,120,10,0.35), 0 30px 60px rgba(0,0,0,0.5), 0 0 80px rgba(212,120,10,0.14); }
+
+/* ── VIDEO VIGNETTE ───────────────────────────────────────── */
+.video-vignette {
+  background:
+    radial-gradient(circle at top, rgba(212,120,10,0.12), transparent 30%),
+    linear-gradient(180deg, rgba(11,24,34,0.08) 0%, rgba(11,24,34,0.88) 80%, #0B1822 100%);
+}
+
+/* ── WAVE DIVIDER ─────────────────────────────────────────── */
 .wave-divider {
   position: relative;
   overflow: hidden;
   height: 7rem;
 }
-
 .wave-divider svg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+}
+
+/* ── SCAN LINE ────────────────────────────────────────────── */
+.scan-line {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255,255,255,0.012) 2px,
+    rgba(255,255,255,0.012) 4px
+  );
+}
+
+/* ── HERO MESH ────────────────────────────────────────────── */
+.hero-mesh {
+  background:
+    radial-gradient(ellipse at 15% 35%, rgba(212,120,10,0.18) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 25%, rgba(27,184,232,0.14) 0%, transparent 42%),
+    radial-gradient(ellipse at 60% 75%, rgba(212,120,10,0.08) 0%, transparent 40%),
+    #0B1822;
+}
+
+/* ── BOOKING MESH ─────────────────────────────────────────── */
+.booking-mesh {
+  background:
+    radial-gradient(ellipse at 15% 50%, rgba(212,120,10,0.20) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 30%, rgba(27,184,232,0.10) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 90%, rgba(212,120,10,0.10) 0%, transparent 40%),
+    #0B1822;
+}
+
+/* ── FOOTER CTA MESH ──────────────────────────────────────── */
+.footer-cta-mesh {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(212,120,10,0.22) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 40%, rgba(27,184,232,0.12) 0%, transparent 45%),
+    #0B1822;
 }
