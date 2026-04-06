@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const navItems = [
   { label: "Home",        href: "#hero" },
@@ -13,6 +13,23 @@ const navItems = [
 
 export function TopNav() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
+
+  useEffect(() => {
+    const sections = ["hero", "rides", "location", "booking"];
+    const observers: IntersectionObserver[] = [];
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        entries => { if (entries[0].isIntersecting) setActiveSection(id); },
+        { threshold: 0.25 }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+    return () => observers.forEach(o => o.disconnect());
+  }, []);
 
   return (
     <motion.header
@@ -21,10 +38,10 @@ export function TopNav() {
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       className="fixed inset-x-0 top-0 z-[60]"
       style={{
-        background: "rgba(0,0,0,0.3)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-        borderBottom: "1px solid rgba(255,255,255,0.10)",
+        background: "rgba(11,24,34,0.92)",
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)",
+        borderBottom: "1px solid rgba(212,120,10,0.25)",
       }}
     >
       {/* Nav content */}
@@ -53,24 +70,31 @@ export function TopNav() {
 
         {/* Center — Desktop nav links */}
         <nav className="hidden items-center gap-8 md:flex">
-          {navItems.map((item) => (
+          {navItems.map((item) => {
+            const sectionId = item.href.replace("#", "");
+            const isActive = activeSection === sectionId;
+            return (
             <a
               key={item.label}
               href={item.href}
-              className="group relative text-white/75 transition-colors duration-200 hover:text-white"
-              style={{ fontSize: "14px", fontWeight: 500, fontFamily: "var(--font-sans)" }}
+              className="group relative transition-colors duration-200 hover:text-white"
+              style={{ fontSize: "14px", fontWeight: 500, fontFamily: "var(--font-sans)", color: isActive ? "#F5A623" : "rgba(255,255,255,0.75)" }}
             >
               {item.label}
-              <span className="absolute -bottom-0.5 left-0 h-[1.5px] w-0 rounded-full bg-[#D4780A] transition-all duration-300 group-hover:w-full" />
+              <span
+                className="absolute -bottom-0.5 left-0 h-[1.5px] rounded-full bg-[#D4780A] transition-all duration-300 group-hover:w-full"
+                style={{ width: isActive ? "100%" : "0" }}
+              />
             </a>
-          ))}
+            );
+          })}
         </nav>
 
         {/* Right — Book Now + Hamburger */}
         <div className="flex items-center gap-3">
           <a
             href="#booking"
-            className="hidden rounded-full px-5 py-2.5 text-white transition-all duration-200 hover:brightness-110 hover:-translate-y-px md:flex"
+            className="hidden rounded-full px-6 py-2.5 text-white transition-all duration-200 hover:-translate-y-px md:flex"
             style={{
               background: "#D4780A",
               fontSize: "13px",
@@ -79,6 +103,8 @@ export function TopNav() {
               fontFamily: "var(--font-sans)",
               boxShadow: "0 4px 16px rgba(212,120,10,0.45)",
             }}
+            onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 0 20px rgba(212,120,10,0.6), 0 4px 16px rgba(212,120,10,0.45)"; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 16px rgba(212,120,10,0.45)"; }}
           >
             Book Now
           </a>

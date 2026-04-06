@@ -33,7 +33,10 @@ export function BrandStorySection() {
                   className={`grid items-center gap-12 lg:grid-cols-2 ${isReversed ? "lg:[direction:rtl]" : ""}`}
                 >
                   {/* Image */}
-                  <div className={`relative overflow-hidden rounded-2xl ${isReversed ? "lg:[direction:ltr]" : ""}`} style={{ aspectRatio: "4/3" }}>
+                  <div
+                    className={`relative overflow-hidden ${isReversed ? "lg:[direction:ltr]" : ""}`}
+                    style={{ aspectRatio: "4/3", borderRadius: "20px", boxShadow: "0 8px 40px rgba(11,24,34,0.18)" }}
+                  >
                     <Image
                       src={panel.image}
                       alt={panel.title}
@@ -41,7 +44,9 @@ export function BrandStorySection() {
                       sizes="(max-width:1024px) 100vw, 50vw"
                       className="object-cover transition duration-700 hover:scale-[1.03]"
                     />
-                    <div className="absolute inset-0 bg-[linear-gradient(160deg,transparent_50%,rgba(11,24,34,0.4)_100%)]" />
+                    <div className="absolute inset-0 bg-[linear-gradient(160deg,transparent_50%,rgba(11,24,34,0.35)_100%)]" />
+                    {/* Warm tint for cream-bg sections */}
+                    <div className="absolute inset-0" style={{ background: "rgba(255,200,100,0.04)", mixBlendMode: "multiply" }} />
                   </div>
 
                   {/* Text */}
@@ -55,13 +60,13 @@ export function BrandStorySection() {
                     <div className="mt-3 h-0.5 w-10 rounded-full" style={{ background: "#D4780A" }} />
                     <h3
                       className="mt-5 font-display font-black text-balance"
-                      style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)", lineHeight: 1.1, letterSpacing: "-0.02em", color: "#0B1822" }}
+                      style={{ fontSize: "clamp(1.75rem, 7vw, 3rem)", lineHeight: 1.08, letterSpacing: "-0.02em", color: "#0B1822" }}
                     >
                       {panel.title}
                     </h3>
                     <p
                       className="mt-5"
-                      style={{ fontSize: "1rem", lineHeight: "1.88", color: "rgba(11,24,34,0.62)", fontFamily: "var(--font-sans)" }}
+                      style={{ fontSize: "16px", lineHeight: "1.75", color: "rgba(11,24,34,0.62)", fontFamily: "var(--font-sans)" }}
                     >
                       {panel.text}
                     </p>

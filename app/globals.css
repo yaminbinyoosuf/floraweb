@@ -281,6 +281,64 @@
   to   { transform: rotate(360deg); }
 }
 
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal:nth-child(1) { transition-delay: 0s; }
+.reveal:nth-child(2) { transition-delay: 0.1s; }
+.reveal:nth-child(3) { transition-delay: 0.2s; }
+.reveal:nth-child(4) { transition-delay: 0.3s; }
+.reveal:nth-child(5) { transition-delay: 0.4s; }
+
+/* ── CUSTOM CURSOR (desktop only) ── */
+@media (min-width: 1024px) and (pointer: fine) {
+  * { cursor: none !important; }
+  .custom-cursor {
+    width: 12px;
+    height: 12px;
+    background: #D4780A;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 99999;
+    transition: transform 0.15s ease, width 0.15s ease, height 0.15s ease, background 0.15s ease;
+    transform: translate(-50%, -50%);
+    top: 0; left: 0;
+  }
+  .custom-cursor.hovering {
+    transform: translate(-50%, -50%) scale(2.5);
+    background: rgba(212,120,10,0.45);
+  }
+}
+
+/* ── PAGE LOAD OVERLAY ── */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99990;
+  background: #0B1822;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.page-loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* ── BUTTON UNIVERSAL HOVER ── */
+button, a.btn-primary {
+  cursor: pointer;
+}
+
 .animate-float      { animation: float 6s ease-in-out infinite; }
 .animate-float-2    { animation: float-delayed 8s ease-in-out infinite 1s; }
 .animate-float-3    { animation: float 7s ease-in-out infinite 2s; }

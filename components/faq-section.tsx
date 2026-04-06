@@ -65,8 +65,18 @@ export function FaqSection() {
                   >
                     <div className="flex items-center gap-4">
                       <span
-                        className="flex-shrink-0 font-display font-black"
-                        style={{ fontSize: "clamp(14px, 4vw, 20px)", color: isOpen ? "#D4780A" : "rgba(11,24,34,0.2)", letterSpacing: "-0.02em" }}
+                        className="flex-shrink-0 flex items-center justify-center font-sans font-semibold"
+                        style={{
+                          width: "28px",
+                          height: "28px",
+                          borderRadius: "50%",
+                          background: isOpen ? "rgba(212,120,10,0.18)" : "rgba(11,24,34,0.07)",
+                          color: isOpen ? "#D4780A" : "rgba(11,24,34,0.35)",
+                          fontSize: "12px",
+                          flexShrink: 0,
+                          fontFamily: "var(--font-sans)",
+                          transition: "background 0.2s, color 0.2s",
+                        }}
                       >
                         {String(i + 1).padStart(2, "0")}
                       </span>
@@ -110,11 +120,11 @@ export function FaqSection() {
                         className="overflow-hidden"
                       >
                         <p
-                          className="px-7 pb-6 pl-20"
+                          className="px-7 pb-6 pl-[4.5rem]"
                           style={{
                             fontSize: "0.97rem",
-                            lineHeight: "1.88",
-                            color: "rgba(11,24,34,0.62)",
+                            lineHeight: "1.75",
+                            color: "rgba(11,24,34,0.65)",
                             fontFamily: "var(--font-sans)",
                           }}
                         >

@@ -60,10 +60,19 @@ function TestimonialCard({
       onMouseEnter={e => { e.currentTarget.style.boxShadow = "0 8px 32px rgba(212,120,10,0.12), 0 2px 8px rgba(11,24,34,0.06)"; e.currentTarget.style.borderColor = "rgba(212,120,10,0.2)"; }}
       onMouseLeave={e => { e.currentTarget.style.boxShadow = "0 2px 16px rgba(11,24,34,0.07), 0 1px 4px rgba(11,24,34,0.04)"; e.currentTarget.style.borderColor = "rgba(11,24,34,0.06)"; }}
     >
+      {/* Decorative quote mark top-left */}
+      <div
+        className="pointer-events-none absolute left-5 top-3 select-none font-display font-black leading-none"
+        style={{ fontSize: "4rem", color: "#D4780A", opacity: 0.13, lineHeight: 1 }}
+        aria-hidden
+      >
+        &ldquo;
+      </div>
+
       {/* Stars */}
       <div className="mb-5 flex items-center gap-1.5">
         {Array.from({ length: 5 }).map((_, si) => (
-          <svg key={si} width="13" height="13" viewBox="0 0 14 14" fill="#F5C842">
+          <svg key={si} width="16" height="16" viewBox="0 0 14 14" fill="#F5C842">
             <path d="M7 1l1.8 3.6L13 5.4l-3 2.9.7 4.1L7 10.5l-3.7 1.9.7-4.1-3-2.9 4.2-.7z" />
           </svg>
         ))}
@@ -73,15 +82,6 @@ function TestimonialCard({
         >
           5.0
         </span>
-      </div>
-
-      {/* Quote watermark */}
-      <div
-        className="pointer-events-none absolute -right-2 -top-4 select-none font-display font-black leading-none"
-        style={{ fontSize: "7rem", color: "rgba(212,120,10,0.05)" }}
-        aria-hidden
-      >
-        "
       </div>
 
       <p

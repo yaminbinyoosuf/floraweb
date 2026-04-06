@@ -3,13 +3,16 @@
 import { useEffect, useState } from "react";
 import { BookingSection }    from "@/components/booking-section";
 import { BrandStorySection } from "@/components/brand-story-section";
+import { CustomCursor }      from "@/components/custom-cursor";
 import { FaqSection }        from "@/components/faq-section";
+import { FloatingWhatsApp }  from "@/components/floating-whatsapp";
 import { Footer }            from "@/components/footer";
 import { FooterCta }         from "@/components/footer-cta";
 import { GallerySection }    from "@/components/gallery-section";
 import { HeroSection }       from "@/components/hero-section";
 import { LocationSection }   from "@/components/location-section";
 import { MarqueeTicker }     from "@/components/marquee-ticker";
+import { PageLoader }        from "@/components/page-loader";
 import { PortalScreen }      from "@/components/portal-screen";
 import { RideExplorer }      from "@/components/ride-explorer";
 import { RippleSurface }     from "@/components/ripple-surface";
@@ -34,6 +37,9 @@ export function ImmersiveParkExperience() {
 
   return (
     <main className="park-bg relative overflow-hidden" style={{ colorScheme: "dark" }}>
+      <PageLoader />
+      <CustomCursor />
+      <FloatingWhatsApp />
       <PortalScreen open={entered} onEnter={() => setEntered(true)} />
       <RippleSurface />
       <TopNav />

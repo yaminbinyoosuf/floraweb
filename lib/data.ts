@@ -225,7 +225,7 @@ export const parkStats = [
   { value: "13+", label: "Years Running" },
   { value: "40+", label: "Rides & Zones" },
   { value: "#1", label: "Kerala Footfall" },
-  { value: "5M+", label: "Happy Visitors" },
+  { value: "500K+", label: "Happy Visitors" },
 ];
 
 export const testimonials = [

@@ -26,23 +26,26 @@ export function MarqueeTicker({ className = "" }: MarqueeTickerProps) {
 
   return (
     <div
-      className={`group relative overflow-hidden border-y py-4 ${className}`}
+      className={`group relative overflow-hidden py-4 ${className}`}
       style={{
-        borderColor: "rgba(255,255,255,0.07)",
+        borderTop: "1px solid rgba(255,255,255,0.05)",
+        borderBottom: "1px solid rgba(255,255,255,0.05)",
         background: "rgba(11,24,34,0.8)",
       }}
     >
-      {/* Fade edges */}
+      {/* Fade edges with mask */}
       <div
-        className="pointer-events-none absolute inset-y-0 left-0 w-20 z-10"
-        style={{ background: "linear-gradient(90deg,#0B1822,transparent)" }}
-      />
-      <div
-        className="pointer-events-none absolute inset-y-0 right-0 w-20 z-10"
-        style={{ background: "linear-gradient(270deg,#0B1822,transparent)" }}
+        className="pointer-events-none absolute inset-0 z-10"
+        style={{
+          maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+        }}
       />
 
-      <div className="animate-marquee flex w-max gap-0 group-hover:[animation-play-state:paused]">
+      <div
+        className="animate-marquee flex w-max gap-0 group-hover:[animation-play-state:paused]"
+        style={{ animationDuration: "30s" }}
+      >
         {doubled.map((item, i) => (
           <span key={i} className="flex items-center gap-5 px-6">
             <span
@@ -57,12 +60,14 @@ export function MarqueeTicker({ className = "" }: MarqueeTickerProps) {
             >
               {item}
             </span>
-            {/* Alternating orange and blue dots */}
+            {/* Alternating orange and blue dots — slightly bigger */}
             <span
-              className="h-1.5 w-1.5 flex-shrink-0 rounded-full"
+              className="flex-shrink-0 rounded-full"
               style={{
+                width: "7px",
+                height: "7px",
                 background: i % 2 === 0 ? "#D4780A" : "#1BB8E8",
-                opacity: 0.7,
+                opacity: 0.75,
               }}
             />
           </span>

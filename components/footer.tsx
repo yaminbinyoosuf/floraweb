@@ -4,8 +4,8 @@ import { socialLinks, WHATSAPP_LINK } from "@/lib/data";
 export function Footer() {
   return (
     <footer
-      className="relative overflow-hidden noise"
-      style={{ background: "#070F16", borderTop: "1px solid rgba(255,255,255,0.06)" }}
+      className="relative noise"
+      style={{ background: "#070F16", borderTop: "1px solid rgba(255,255,255,0.06)", overflowX: "hidden" }}
     >
       {/* Top glow line */}
       <div
@@ -23,11 +23,11 @@ export function Footer() {
         style={{ background: "radial-gradient(circle, rgba(27,184,232,0.05), transparent 60%)" }}
       />
 
-      <div className="shell relative py-16 md:py-20">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+      <div className="shell relative py-16 md:py-20" style={{ paddingLeft: "max(20px, var(--shell-px, 20px))", paddingRight: "max(20px, var(--shell-px, 20px))" }}>
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4" style={{ overflowX: "hidden" }}>
 
           {/* Brand */}
-          <div className="max-w-sm lg:col-span-1">
+          <div className="lg:col-span-1" style={{ minWidth: 0, overflowWrap: "break-word", wordBreak: "break-word" }}>
             <div className="flex items-center gap-3.5">
               <div
                 className="relative h-10 w-10 overflow-hidden rounded-full"
@@ -53,7 +53,7 @@ export function Footer() {
 
             <p
               className="mt-5 text-white/38"
-              style={{ fontSize: "0.88rem", lineHeight: "1.85", fontFamily: "var(--font-sans)" }}
+              style={{ fontSize: "0.88rem", lineHeight: "1.85", fontFamily: "var(--font-sans)", maxWidth: "100%", overflow: "hidden" }}
             >
               Malabar&apos;s own amusement park — 13 years of joy, water, thrill, and
               family memories in the heart of Valancheri, Malappuram.
@@ -110,7 +110,7 @@ export function Footer() {
           </div>
 
           {/* Explore */}
-          <div>
+          <div style={{ minWidth: 0 }}>
             <p
               className="mb-5 uppercase text-white/28"
               style={{ fontSize: "10px", fontWeight: 500, letterSpacing: "0.28em", fontFamily: "var(--font-sans)" }}
@@ -140,7 +140,7 @@ export function Footer() {
           </div>
 
           {/* Connect */}
-          <div>
+          <div style={{ minWidth: 0, overflowWrap: "break-word", wordBreak: "break-word" }}>
             <p
               className="mb-5 uppercase text-white/28"
               style={{ fontSize: "10px", fontWeight: 500, letterSpacing: "0.28em", fontFamily: "var(--font-sans)" }}
@@ -170,7 +170,7 @@ export function Footer() {
           </div>
 
           {/* Visit */}
-          <div>
+          <div style={{ minWidth: 0 }}>
             <p
               className="mb-5 uppercase text-white/28"
               style={{ fontSize: "10px", fontWeight: 500, letterSpacing: "0.28em", fontFamily: "var(--font-sans)" }}

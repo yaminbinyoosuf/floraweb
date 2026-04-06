@@ -24,9 +24,9 @@ export function GallerySection() {
 
         {/* Masonry grid using CSS columns */}
         <style>{`
-          #gallery-masonry { columns: 1; column-gap: 1rem; }
-          @media (min-width: 640px) { #gallery-masonry { columns: 2; } }
-          @media (min-width: 1024px) { #gallery-masonry { columns: 3; } }
+          #gallery-masonry { columns: 2; column-gap: 8px; }
+          @media (min-width: 768px) { #gallery-masonry { columns: 3; column-gap: 12px; } }
+          @media (min-width: 1280px) { #gallery-masonry { columns: 4; } }
         `}</style>
         <div className="mt-14">
           <div id="gallery-masonry">
@@ -35,10 +35,10 @@ export function GallerySection() {
                 key={item.src}
                 initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.7, delay: index * 0.04, ease: smoothEase }}
-                className="group relative mb-4 cursor-pointer overflow-hidden break-inside-avoid rounded-xl"
-                style={{ border: "1px solid rgba(11,24,34,0.08)" }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 0.7, delay: Math.min(index * 0.04, 0.4), ease: smoothEase }}
+                className="group relative cursor-pointer overflow-hidden break-inside-avoid rounded-xl"
+                style={{ border: "1px solid rgba(11,24,34,0.08)", marginBottom: "8px" }}
               >
                 <div className="relative overflow-hidden">
                   <Image

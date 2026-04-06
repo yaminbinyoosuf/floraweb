@@ -73,12 +73,20 @@ export function RideExplorer() {
 
         {/* Rides grid + sidebar */}
         <div className="mt-10 grid gap-6 xl:grid-cols-[1fr_320px]">
-          {/* Ride cards grid */}
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {/* Ride cards — snap scroll on mobile, grid on desktop */}
+          <style>{`
+            .rides-scroll { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; gap: 12px; padding-bottom: 12px; scrollbar-width: none; }
+            .rides-scroll::-webkit-scrollbar { display: none; }
+            .ride-snap-card { scroll-snap-align: start; min-width: 80vw; flex-shrink: 0; }
+            @media (min-width: 768px) { .rides-scroll { display: grid; grid-template-columns: repeat(2, 1fr); overflow-x: visible; gap: 16px; } .ride-snap-card { min-width: unset; } }
+            @media (min-width: 1024px) { .rides-scroll { grid-template-columns: repeat(3, 1fr); } }
+          `}</style>
+          <div className="rides-scroll">
             <AnimatePresence mode="wait">
               {filteredRides.map((ride, i) => (
                 <motion.div
                   key={`${activeCategory}-${ride.title}`}
+                  className="ride-snap-card"
                   initial={{ opacity: 0, y: 20, scale: 0.97 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -12, scale: 0.97 }}
@@ -87,7 +95,7 @@ export function RideExplorer() {
                   <button
                     type="button"
                     onClick={() => setSelectedRide(ride)}
-                    className="group relative w-full overflow-hidden rounded-2xl p-6 text-left transition-all duration-300 hover:-translate-y-1"
+                    className="group relative w-full overflow-hidden rounded-[18px] p-6 text-left transition-all duration-300 hover:-translate-y-1"
                     style={{
                       background: "rgba(255,255,255,0.04)",
                       border: "1px solid rgba(255,255,255,0.08)",
@@ -95,7 +103,7 @@ export function RideExplorer() {
                     onMouseEnter={e => {
                       const el = e.currentTarget;
                       el.style.borderColor = `${cfg.color}55`;
-                      el.style.boxShadow = `0 0 24px ${cfg.glow}`;
+                      el.style.boxShadow = `0 8px 32px ${cfg.glow}, 0 0 0 1px ${cfg.color}22`;
                     }}
                     onMouseLeave={e => {
                       const el = e.currentTarget;
@@ -103,15 +111,20 @@ export function RideExplorer() {
                       el.style.boxShadow = "none";
                     }}
                   >
+                    {/* Gradient top bar */}
+                    <div
+                      className="absolute inset-x-0 top-0 h-[3px]"
+                      style={{ background: `linear-gradient(90deg, ${cfg.color}, transparent)` }}
+                    />
                     {/* Ride icon */}
-                    <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl" style={{ background: `${cfg.color}18`, border: `1px solid ${cfg.color}35` }}>
+                    <div className="mb-5 flex h-20 w-20 items-center justify-center rounded-2xl" style={{ background: `${cfg.color}18`, border: `1px solid ${cfg.color}35` }}>
                       <Image
                         src={ride.image}
                         alt={ride.title}
-                        width={32}
-                        height={32}
-                        className="opacity-80"
-                        style={{ filter: `drop-shadow(0 0 4px ${cfg.color})` }}
+                        width={40}
+                        height={40}
+                        className="opacity-85"
+                        style={{ filter: `drop-shadow(0 0 6px ${cfg.color})` }}
                       />
                     </div>
 
@@ -144,13 +157,13 @@ export function RideExplorer() {
             </AnimatePresence>
           </div>
 
-          {/* Sidebar */}
+          {/* Sidebar — hidden on mobile */}
           <motion.aside
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7, ease: smoothEase }}
-            className="rounded-2xl p-8"
+            className="hidden xl:block rounded-2xl p-8"
             style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}
           >
             <p

@@ -5,6 +5,11 @@ import { SectionHeading } from "@/components/ui";
 import { DIRECTIONS_LINK, parkHours } from "@/lib/data";
 import { smoothEase } from "@/lib/motion";
 
+// Map JS getDay() (0=Sun) to park hours day index
+const DAY_MAP: Record<number, string> = {
+  0: "Sunday (Easter)", 1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday", 6: "Saturday",
+};
+
 const infoCards = [
   {
     color: "#1BB8E8",
@@ -49,6 +54,8 @@ const infoCards = [
 ];
 
 export function LocationSection() {
+  const todayDayName = DAY_MAP[new Date().getDay()] ?? "";
+
   return (
     <section
       id="location"
@@ -131,19 +138,25 @@ export function LocationSection() {
                 </p>
               </div>
               <div className="px-6 py-2">
-                {parkHours.map((item, idx) => (
+                {parkHours.map((item, idx) => {
+                  const isToday = item.day === todayDayName;
+                  return (
                   <div
                     key={item.day}
                     className="flex items-center justify-between gap-4 py-3"
                     style={{
                       borderBottom: idx < parkHours.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none",
+                      borderLeft: isToday ? "3px solid #D4780A" : "3px solid transparent",
+                      paddingLeft: "12px",
+                      marginLeft: "-12px",
+                      borderRadius: isToday ? "4px" : undefined,
                     }}
                   >
                     <span
-                      className="text-white/65 font-medium"
-                      style={{ fontSize: "0.88rem", fontFamily: "var(--font-sans)" }}
+                      className="font-medium"
+                      style={{ fontSize: "0.88rem", fontFamily: "var(--font-sans)", color: isToday ? "#F5A623" : "rgba(255,255,255,0.65)" }}
                     >
-                      {item.day}
+                      {item.day}{isToday && <span style={{ fontSize: "9px", marginLeft: "6px", opacity: 0.7, letterSpacing: "0.1em", textTransform: "uppercase" }}>Today</span>}
                     </span>
                     <span
                       className="rounded-full px-3 py-1"
@@ -160,7 +173,8 @@ export function LocationSection() {
                       {item.hours}
                     </span>
                   </div>
-                ))}
+                  );
+                })}
               </div>
             </motion.div>
 
@@ -170,14 +184,14 @@ export function LocationSection() {
                 href={DIRECTIONS_LINK}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2.5 rounded-full px-8 py-3.5 text-white transition-all duration-200 hover:brightness-110 hover:-translate-y-px"
+                className="inline-flex items-center gap-3 rounded-full px-10 py-4 text-white transition-all duration-200 hover:brightness-110 hover:-translate-y-px"
                 style={{
                   background: "#D4780A",
-                  fontSize: "14px",
+                  fontSize: "15px",
                   fontWeight: 600,
                   letterSpacing: "0.04em",
                   fontFamily: "var(--font-sans)",
-                  boxShadow: "0 6px 24px rgba(212,120,10,0.4)",
+                  boxShadow: "0 6px 28px rgba(212,120,10,0.45)",
                 }}
               >
                 <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
