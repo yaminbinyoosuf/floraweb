@@ -94,7 +94,7 @@ export function BrandStorySection() {
             className="overflow-hidden rounded-2xl"
             style={{ border: "1px solid rgba(255,255,255,0.08)", background: "rgba(15,36,48,0.85)" }}
           >
-            <div className="grid gap-10 p-10 md:p-14 lg:grid-cols-[1fr_1fr]">
+            <div className="grid gap-8 p-6 md:gap-10 md:p-14 lg:grid-cols-[1fr_1fr]">
               {/* Left */}
               <div>
                 <p

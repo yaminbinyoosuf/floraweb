@@ -86,7 +86,7 @@ export function Footer() {
                     const el = e.currentTarget;
                     el.style.borderColor = "rgba(255,255,255,0.08)";
                     el.style.background = "rgba(255,255,255,0.04)";
-                    el.style.color = "rgba(255,255,255,0.40)";
+                    el.style.color = "rgba(255,255,255,0.75)";
                   }}
                 >
                   {link.label === "Instagram" && (

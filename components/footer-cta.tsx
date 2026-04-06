@@ -7,7 +7,7 @@ import { smoothEase } from "@/lib/motion";
 export function FooterCta() {
   return (
     <section
-      className="relative overflow-hidden py-32 noise md:py-44 footer-cta-mesh"
+      className="relative overflow-hidden py-20 noise md:py-44 footer-cta-mesh"
     >
       {/* Dot grid */}
       <div className="absolute inset-0 dot-pattern opacity-30" />
@@ -94,7 +94,7 @@ export function FooterCta() {
           >
             <a
               href="#booking"
-              className="flex items-center gap-2.5 rounded-full px-10 py-4 text-white transition-all duration-200 hover:brightness-110 hover:-translate-y-1"
+              className="flex w-full items-center justify-center gap-2.5 rounded-full px-10 py-4 text-white transition-all duration-200 hover:brightness-110 hover:-translate-y-1 lg:w-auto"
               style={{
                 background: "#D4780A",
                 fontSize: "15px",

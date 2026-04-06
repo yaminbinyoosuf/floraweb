@@ -29,7 +29,7 @@ export function TestimonialsSection() {
         {/* Mobile horizontal scroll */}
         <div className="mt-14 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 md:hidden" style={{ scrollbarWidth: "none" }}>
           {testimonials.map((t, i) => (
-            <div key={`mobile-${t.name}`} className="w-[85vw] flex-shrink-0 snap-start">
+            <div key={`mobile-${t.name}`} className="w-[88vw] flex-shrink-0 snap-start">
               <TestimonialCard testimonial={t} index={i} />
             </div>
           ))}

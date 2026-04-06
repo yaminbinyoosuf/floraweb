@@ -30,10 +30,7 @@ export function HeroSection({ onExplore }: { onExplore: () => void }) {
       style={{ minHeight: "100svh" }}
     >
       {/* ── Full-bleed background image with parallax ── */}
-      <motion.div
-        className="absolute inset-0"
-        style={{ y: bgY }}
-      >
+      <motion.div className="absolute inset-0" style={{ y: bgY }}>
         <Image
           src={HERO_IMAGE}
           alt="Flora Fantasia Amusement Park aerial view"
@@ -47,18 +44,26 @@ export function HeroSection({ onExplore }: { onExplore: () => void }) {
       {/* ── Top gradient for nav readability ── */}
       <div
         className="absolute inset-x-0 top-0 h-40 z-[1] pointer-events-none"
-        style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 100%)" }}
+        style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 100%)" }}
       />
 
-      {/* ── Dark overlay — left heavy so left-side text pops ── */}
+      {/* ── Dark overlay — heavier on mobile (centered), left-heavy on desktop ── */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(105deg, rgba(11,24,34,0.92) 0%, rgba(11,24,34,0.78) 45%, rgba(11,24,34,0.45) 75%, rgba(11,24,34,0.30) 100%)",
+            "linear-gradient(180deg, rgba(11,24,34,0.75) 0%, rgba(11,24,34,0.82) 40%, rgba(11,24,34,0.65) 70%, rgba(11,24,34,0.50) 100%)",
         }}
       />
-      {/* Bottom fade to page bg */}
+      {/* Desktop: extra left-side darkening */}
+      <div
+        className="absolute inset-0 hidden md:block"
+        style={{
+          background:
+            "linear-gradient(105deg, rgba(11,24,34,0.35) 0%, transparent 55%)",
+        }}
+      />
+      {/* Bottom fade */}
       <div
         className="absolute inset-x-0 bottom-0 h-40"
         style={{ background: "linear-gradient(to top, #0B1822 0%, transparent 100%)" }}
@@ -66,43 +71,42 @@ export function HeroSection({ onExplore }: { onExplore: () => void }) {
 
       {/* ── Content ── */}
       <motion.div
-        className="shell relative flex min-h-screen flex-col justify-center pt-36 pb-20"
+        className="shell relative flex min-h-screen flex-col justify-center pt-28 pb-16 md:pt-36 md:pb-20"
         style={{ y: contentY, opacity }}
       >
-        {/* Left-side text — max half width on desktop */}
         <motion.div
           variants={stagger}
           initial="hidden"
           animate="show"
-          className="flex flex-col max-w-2xl"
+          className="flex flex-col w-full md:max-w-2xl"
         >
           {/* Badges row */}
-          <motion.div variants={fadeUp} className="flex flex-wrap gap-3">
+          <motion.div variants={fadeUp} className="flex flex-wrap gap-2">
             <span
-              className="inline-flex items-center gap-2 rounded-full px-4 py-2 backdrop-blur-sm"
+              className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 backdrop-blur-sm"
               style={{
                 border: "1px solid rgba(27,184,232,0.45)",
                 color: "#1BB8E8",
-                fontSize: "11px",
+                fontSize: "10px",
                 fontWeight: 500,
-                letterSpacing: "0.2em",
+                letterSpacing: "0.12em",
                 textTransform: "uppercase",
                 fontFamily: "var(--font-sans)",
               }}
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-[#1BB8E8] animate-pulse" />
+              <span className="h-1.5 w-1.5 rounded-full bg-[#1BB8E8] animate-pulse flex-shrink-0" />
               Kerala, India · Malappuram
             </span>
 
             <span
-              className="inline-flex items-center gap-2 rounded-full px-4 py-2 backdrop-blur-sm"
+              className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 backdrop-blur-sm"
               style={{
                 background: "rgba(212,120,10,0.18)",
                 border: "1px solid rgba(212,120,10,0.4)",
                 color: "#F5A623",
-                fontSize: "11px",
+                fontSize: "10px",
                 fontWeight: 500,
-                letterSpacing: "0.18em",
+                letterSpacing: "0.12em",
                 textTransform: "uppercase",
                 fontFamily: "var(--font-sans)",
               }}
@@ -112,12 +116,12 @@ export function HeroSection({ onExplore }: { onExplore: () => void }) {
           </motion.div>
 
           {/* Giant headline */}
-          <motion.div variants={fadeUp} className="mt-7">
+          <motion.div variants={fadeUp} className="mt-5 md:mt-7">
             <h1
               className="font-display font-black uppercase"
               style={{
-                fontSize: "clamp(3.8rem, 10vw, 9rem)",
-                lineHeight: 0.9,
+                fontSize: "clamp(3rem, 12vw, 9rem)",
+                lineHeight: 0.92,
                 letterSpacing: "-0.03em",
               }}
             >
@@ -132,11 +136,12 @@ export function HeroSection({ onExplore }: { onExplore: () => void }) {
           {/* Sub-headline */}
           <motion.p
             variants={fadeUp}
-            className="mt-6 text-white/80"
+            className="mt-5 text-white/85"
             style={{
-              fontSize: "clamp(1rem, 3vw, 1.4rem)",
-              fontWeight: 300,
+              fontSize: "clamp(1.05rem, 3.5vw, 1.4rem)",
+              fontWeight: 400,
               fontFamily: "var(--font-sans)",
+              lineHeight: 1.5,
             }}
           >
             Unleash Your Inner Child!
@@ -145,12 +150,11 @@ export function HeroSection({ onExplore }: { onExplore: () => void }) {
           {/* Body */}
           <motion.p
             variants={fadeUp}
-            className="mt-3 text-white/55"
+            className="mt-3 text-white/60"
             style={{
-              fontSize: "1rem",
+              fontSize: "clamp(0.9rem, 2.5vw, 1rem)",
               lineHeight: "1.8",
               fontFamily: "var(--font-sans)",
-              maxWidth: "480px",
             }}
           >
             Kerala&apos;s most spectacular family adventure park — water thrills,
@@ -158,15 +162,15 @@ export function HeroSection({ onExplore }: { onExplore: () => void }) {
           </motion.p>
 
           {/* CTA buttons */}
-          <motion.div variants={fadeUp} className="mt-9 flex flex-wrap gap-4">
+          <motion.div variants={fadeUp} className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
             <a
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2.5 rounded-full px-8 py-3.5 text-white transition-all duration-200 hover:brightness-110 hover:-translate-y-px"
+              className="flex items-center justify-center gap-2.5 rounded-full px-8 py-4 text-white transition-all duration-200 hover:brightness-110 hover:-translate-y-px"
               style={{
                 background: "#D4780A",
-                fontSize: "14px",
+                fontSize: "15px",
                 fontWeight: 600,
                 letterSpacing: "0.04em",
                 fontFamily: "var(--font-sans)",
@@ -181,10 +185,10 @@ export function HeroSection({ onExplore }: { onExplore: () => void }) {
             <button
               type="button"
               onClick={onExplore}
-              className="flex items-center gap-2.5 rounded-full px-8 py-3.5 text-white transition-all duration-200 hover:bg-white/10"
+              className="flex items-center justify-center gap-2.5 rounded-full px-8 py-4 text-white transition-all duration-200 hover:bg-white/10"
               style={{
                 border: "1px solid rgba(255,255,255,0.35)",
-                fontSize: "14px",
+                fontSize: "15px",
                 fontWeight: 600,
                 letterSpacing: "0.04em",
                 fontFamily: "var(--font-sans)",
@@ -200,20 +204,20 @@ export function HeroSection({ onExplore }: { onExplore: () => void }) {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.9, ease: smoothEase }}
-          className="mt-20 grid grid-cols-2 gap-x-10 gap-y-6 border-t pt-10 md:grid-cols-4"
+          className="mt-14 md:mt-20 grid grid-cols-2 gap-x-6 gap-y-7 border-t pt-8 md:pt-10 md:gap-x-10 md:grid-cols-4"
           style={{ borderColor: "rgba(255,255,255,0.12)", maxWidth: "680px" }}
         >
           {parkStats.map((stat) => (
             <div key={stat.label} className="flex flex-col">
               <span
                 className="font-display font-black text-gradient-orange"
-                style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.5rem)", lineHeight: 1, letterSpacing: "-0.02em" }}
+                style={{ fontSize: "clamp(2rem, 8vw, 3.5rem)", lineHeight: 1, letterSpacing: "-0.02em" }}
               >
                 {stat.value}
               </span>
               <span
-                className="mt-1.5 uppercase text-white/50"
-                style={{ fontSize: "10px", letterSpacing: "0.2em", fontFamily: "var(--font-sans)", fontWeight: 500 }}
+                className="mt-1.5 uppercase text-white/55"
+                style={{ fontSize: "clamp(9px, 2vw, 10px)", letterSpacing: "0.15em", fontFamily: "var(--font-sans)", fontWeight: 500 }}
               >
                 {stat.label}
               </span>

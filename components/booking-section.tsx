@@ -73,7 +73,7 @@ export function BookingSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.6, delay: i * 0.08, ease: smoothEase }}
-              className="relative overflow-hidden rounded-2xl p-8 transition-transform duration-300 hover:-translate-y-1.5 noise md:p-10"
+              className="relative overflow-hidden rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1.5 noise md:p-10"
               style={{
                 background: tier.featured ? "rgba(212,120,10,0.08)" : "rgba(255,255,255,0.04)",
                 border: tier.featured ? "1px solid rgba(212,120,10,0.4)" : "1px solid rgba(255,255,255,0.08)",
@@ -173,7 +173,7 @@ export function BookingSection() {
         >
           {/* Info card */}
           <div
-            className="rounded-2xl p-8 noise md:p-10"
+            className="rounded-2xl p-6 noise md:p-10"
             style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}
           >
             {/* Badge */}
@@ -217,7 +217,7 @@ export function BookingSection() {
           {/* Form */}
           <form
             onSubmit={handleSubmit}
-            className="rounded-2xl p-8 noise md:p-10"
+            className="rounded-2xl p-6 noise md:p-10"
             style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}
           >
             <div className="grid gap-5 md:grid-cols-2">
@@ -228,10 +228,10 @@ export function BookingSection() {
               <Field label="Contact Number" name="contactNumber" value={form.contactNumber} onChange={handleChange} placeholder="Phone number" type="tel" />
               <Field label="Date of Visit"  name="visitDate"     value={form.visitDate}     onChange={handleChange} type="date" />
             </div>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
               <button
                 type="submit"
-                className="flex items-center gap-2.5 rounded-full px-8 py-3.5 text-white transition-all duration-200 hover:brightness-110 hover:-translate-y-px"
+                className="flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-full px-8 py-3.5 text-white transition-all duration-200 hover:brightness-110 hover:-translate-y-px"
                 style={{
                   background: "#D4780A",
                   fontSize: "14px",
@@ -249,7 +249,7 @@ export function BookingSection() {
               <button
                 type="button"
                 onClick={handleEmailBooking}
-                className="rounded-full px-8 py-3.5 text-white/70 transition-all duration-200 hover:text-white hover:bg-white/08"
+                className="w-full sm:w-auto rounded-full px-8 py-3.5 text-white/70 transition-all duration-200 hover:text-white hover:bg-white/08 text-center"
                 style={{
                   border: "1px solid rgba(255,255,255,0.2)",
                   fontSize: "14px",
