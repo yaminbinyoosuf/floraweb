@@ -71,15 +71,15 @@ export function PortalScreen({ open, onEnter }: { open: boolean; onEnter: () => 
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/flora-fantasia-logo.jpeg"
+                src="/flora-fantasia-logo-transparent.png"
                 alt="Flora Fantasia Amusement Park"
                 style={{
-                  width: "clamp(150px, 35vw, 220px)",
-                  height: "clamp(150px, 35vw, 220px)",
+                  width: "clamp(160px, 38vw, 240px)",
+                  height: "auto",
                   objectFit: "contain",
-                  mixBlendMode: "screen",
                   display: "block",
-                  margin: "0 auto 24px",
+                  margin: "0 auto 28px",
+                  filter: "drop-shadow(0 8px 32px rgba(0,0,0,0.6))",
                 }}
               />
             </motion.div>
