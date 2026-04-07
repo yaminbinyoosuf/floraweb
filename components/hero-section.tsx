@@ -52,7 +52,7 @@ export function HeroSection({ onExplore }: { onExplore: () => void }) {
         >
           <Image
             src={HERO_IMAGE}
-            alt="Flora Fantasia Amusement Park aerial view"
+            alt="Flora Fantasia amusement park full aerial view Malappuram Kerala"
             fill
             priority
             sizes="100vw"
@@ -227,6 +227,20 @@ export function HeroSection({ onExplore }: { onExplore: () => void }) {
             >
               Explore ↓
             </button>
+          </motion.div>
+
+          {/* Internal link — blog */}
+          <motion.div variants={fadeUp} className="mt-4">
+            <a
+              href="/blog/best-amusement-park-malappuram"
+              className="inline-flex items-center gap-1.5 transition-colors duration-200 hover:text-white"
+              style={{ color: "rgba(255,255,255,0.45)", fontSize: "12px", fontFamily: "var(--font-sans)", fontWeight: 500, letterSpacing: "0.04em" }}
+            >
+              Why we&apos;re Malappuram&apos;s #1 park
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <path d="M1 5h8M5 1l4 4-4 4"/>
+              </svg>
+            </a>
           </motion.div>
         </motion.div>
 

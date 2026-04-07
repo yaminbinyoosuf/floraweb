@@ -32,14 +32,17 @@ export function GallerySection() {
           /* ── Grid layout ── */
           .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 6px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
           }
           @media (min-width: 640px) {
-            .gallery-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+            .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
           }
           @media (min-width: 1024px) {
-            .gallery-grid { grid-template-columns: repeat(5, 1fr); gap: 10px; }
+            .gallery-grid { grid-template-columns: repeat(4, 1fr); gap: 10px; }
+          }
+          @media (min-width: 1280px) {
+            .gallery-grid { grid-template-columns: repeat(5, 1fr); }
           }
 
           /* Featured cards span 2×2 on ≥640px */
@@ -136,7 +139,7 @@ export function GallerySection() {
                   >
                     <Image
                       src={item.src}
-                      alt={item.title}
+                      alt={(item as { src: string; title: string; alt?: string; span: string }).alt || item.title}
                       fill
                       sizes="(max-width:640px) 33vw, (max-width:1024px) 25vw, 20vw"
                       className="object-cover"

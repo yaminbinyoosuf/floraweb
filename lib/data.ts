@@ -16,13 +16,65 @@ export type Zone = {
   stats: string[];
 };
 
-export type RideCategory = "Water Rides" | "Thrill Rides" | "Family Rides";
+export type RideItem = {
+  name: string;
+  desc: string;
+};
 
-export type Ride = {
-  title: string;
-  category: RideCategory;
-  image: string;
-  blurb: string;
+export type RidesData = {
+  water: RideItem[];
+  dry: RideItem[];
+  new: RideItem[];
+};
+
+export const ridesData: RidesData = {
+  water: [
+    { name: "Tornado", desc: "A giant swirling funnel built for dramatic entries and high-energy splash exits." },
+    { name: "Typhoon Tunnel", desc: "A dark enclosed tunnel ride with surging water and unexpected twists." },
+    { name: "Crazy Cruise", desc: "A thrilling water cruise with twists, turns and guaranteed soaking." },
+    { name: "Crazy Cruise Wavy", desc: "The wavy variant of the fan-favourite Crazy Cruise — more dips, more splash." },
+    { name: "Aqua Trail", desc: "A flowing trail ride that winds through the heart of the water zone." },
+    { name: "Thunder Cruise", desc: "High-speed cruise with thunderous water impact at every bend." },
+    { name: "Rapid River Ride", desc: "A fast-moving channel that turns the park into a flowing water circuit." },
+    { name: "Kids Pool", desc: "A calmer splash setting built for younger visitors and easy family supervision." },
+    { name: "Harakkiri", desc: "One of the park's most heart-pounding vertical water slides — not for the faint-hearted." },
+    { name: "Pendulam", desc: "A swinging pendulum water experience that pushes every angle of thrill." },
+    { name: "Pushpak", desc: "A classic family raft ride with smooth flows and shared adventure." },
+    { name: "Mini Crazy Cruise", desc: "The junior version of Crazy Cruise — perfect for kids and first-timers." },
+    { name: "Wave Pool", desc: "A broad resort-like water surface for crowd energy, drifting, and all-day replay value." },
+    { name: "Rain Dance", desc: "Music, water, and social energy combine into one of the park's most vibrant shared experiences." },
+    { name: "50 Feet Water Fall", desc: "A dramatic 50-foot waterfall plunge — the park's most iconic water attraction." },
+    { name: "Family Pool", desc: "A broad shared-water space for slower afternoons and group-friendly downtime." },
+    { name: "Umbrella Pool", desc: "A sheltered pool with playful umbrella water jets and gentle flow." },
+    { name: "Multi Lane (5 Track)", desc: "Five parallel racing lanes — pick yours and race to the bottom." },
+    { name: "Multipurpose Water Play System", desc: "A 6-platform interactive play system with jets, buckets, and splash pads for all ages." },
+  ],
+  dry: [
+    { name: "Cyclone Ride", desc: "A spinning cyclone ride with centrifugal force that builds with every rotation." },
+    { name: "Vertex", desc: "A high-energy vertical spinning ride with rapid direction changes." },
+    { name: "Duck Train", desc: "A charming train ride through the park — beloved by younger visitors." },
+    { name: "Enterprises", desc: "A classic circular ride with full-circle rotation and rising intensity." },
+    { name: "Striking Car", desc: "Bumper car action for all ages — pure controlled chaos on the track." },
+    { name: "D.J. Room", desc: "A music-powered experience where beats and energy collide into one unforgettable atmosphere." },
+    { name: "Horror House", desc: "Step inside if you dare — Flora Fantasia's thrilling haunted attraction." },
+    { name: "16D Theater", desc: "A fully immersive 16D cinema experience with motion, wind, and sensory effects." },
+    { name: "Free Fall", desc: "A clean suspense-and-release drop tower — maximum vertical drama, maximum scream." },
+    { name: "Kangaroo", desc: "A bouncing kangaroo ride with rhythmic up-and-down motion loved by kids." },
+    { name: "Surf Car", desc: "A surfboard-style ride that mimics ocean wave motion on land." },
+    { name: "Giant Wheel", desc: "The park's iconic ferris wheel — panoramic views of Flora Fantasia and beyond." },
+    { name: "Motor Bike", desc: "A motorbike simulation ride with realistic tilt and speed sensation." },
+    { name: "Bull Ride", desc: "A mechanical bull experience that tests balance, grip, and nerve." },
+    { name: "Rain Bow", desc: "A rainbow arc ride sweeping guests through colourful elevation changes." },
+    { name: "Dragon Boat", desc: "A swinging dragon boat that builds momentum into a full pendulum arc." },
+    { name: "Soft Play", desc: "A dedicated soft-play zone for the youngest visitors — safe, padded, and fun." },
+    { name: "Monkey Jump", desc: "A bouncing jump attraction that sends guests soaring in safe, controlled leaps." },
+    { name: "Helicopter Ride", desc: "A spinning helicopter ride where young pilots control their own altitude." },
+    { name: "Various Types of Children Rides", desc: "A dedicated zone with multiple gentle rides designed for toddlers and young children." },
+  ],
+  new: [
+    { name: "Cyclone Coaster", desc: "Kerala's newest and most thrilling coaster — fast directional changes and maximum adrenaline." },
+    { name: "Aquatech Tank", desc: "A cutting-edge aquatic technology tank — one of the most unique experiences in Malabar." },
+  ],
 };
 
 export const zones: Zone[] = [
@@ -38,7 +90,7 @@ export const zones: Zone[] = [
     ambient: "rgba(89, 208, 255, 0.24)",
     gradient:
       "linear-gradient(180deg, rgba(242,250,255,0.98) 0%, rgba(221,244,255,0.92) 58%, rgba(239,250,255,0.98) 100%)",
-    stats: ["Wave Pool", "Rapid River", "Rain Dance", "Aqua Play"],
+    stats: ["Wave Pool", "Rapid River Ride", "Rain Dance", "Aqua Trail"],
   },
   {
     id: "thrill-zone",
@@ -52,7 +104,7 @@ export const zones: Zone[] = [
     ambient: "rgba(255, 180, 92, 0.22)",
     gradient:
       "linear-gradient(180deg, rgba(255,247,240,0.98) 0%, rgba(255,236,220,0.92) 48%, rgba(255,249,242,0.98) 100%)",
-    stats: ["Rush Coaster", "Sky Spin", "Drop Orbit", "Night Energy"],
+    stats: ["Cyclone Coaster", "Harakkiri", "Free Fall", "D.J. Room"],
   },
   {
     id: "family-zone",
@@ -66,125 +118,47 @@ export const zones: Zone[] = [
     ambient: "rgba(255, 222, 154, 0.24)",
     gradient:
       "linear-gradient(180deg, rgba(255,252,241,0.98) 0%, rgba(255,244,215,0.92) 52%, rgba(255,250,238,0.98) 100%)",
-    stats: ["Kids Pool", "Family Pool", "Carousel", "Junior Wheels"],
+    stats: ["Kids Pool", "Family Pool", "Duck Train", "Dragon Boat"],
   },
-];
-
-export const rides: Ride[] = [
-  {
-    title: "Tornado",
-    category: "Water Rides",
-    image: "/rides/tornado.svg",
-    blurb: "A giant swirling funnel built for dramatic entries and high-energy splash exits.",
-  },
-  {
-    title: "Wave Pool",
-    category: "Water Rides",
-    image: "/rides/wave-pool.svg",
-    blurb: "A broad resort-like water surface for crowd energy, drifting moments, and all-day replay value.",
-  },
-  {
-    title: "Rapid River",
-    category: "Water Rides",
-    image: "/rides/rapid-river.svg",
-    blurb: "A faster moving channel that turns the park into a flowing water circuit.",
-  },
-  {
-    title: "Rain Dance",
-    category: "Water Rides",
-    image: "/rides/rain-dance.svg",
-    blurb: "Music, water, and social energy combine into one of the park’s most vibrant shared experiences.",
-  },
-  {
-    title: "Kids Pool",
-    category: "Water Rides",
-    image: "/rides/kids-pool.svg",
-    blurb: "A calmer splash setting built for younger visitors and easy family supervision.",
-  },
-  {
-    title: "Sky Spin",
-    category: "Thrill Rides",
-    image: "/rides/sky-spin.svg",
-    blurb: "High-elevation motion, sweeping arcs, and a skyline-first thrill profile.",
-  },
-  {
-    title: "Drop Orbit",
-    category: "Thrill Rides",
-    image: "/rides/drop-orbit.svg",
-    blurb: "A clean suspense-and-release ride experience with strong vertical drama.",
-  },
-  {
-    title: "Rush Coaster",
-    category: "Thrill Rides",
-    image: "/rides/rush-coaster.svg",
-    blurb: "Fast directional changes and coaster energy for guests chasing pure adrenaline.",
-  },
-  {
-    title: "Family Pool",
-    category: "Family Rides",
-    image: "/rides/family-pool.svg",
-    blurb: "A broad shared-water space for slower afternoons and group-friendly downtime.",
-  },
-  {
-    title: "Fantasy Carousel",
-    category: "Family Rides",
-    image: "/rides/fantasy-carousel.svg",
-    blurb: "A nostalgic centerpiece ride with softer pacing and classic visual charm.",
-  },
-  {
-    title: "Junior Wheels",
-    category: "Family Rides",
-    image: "/rides/junior-wheels.svg",
-    blurb: "A playful lower-intensity attraction designed for younger explorers.",
-  },
-  {
-    title: "Waterfall Plaza",
-    category: "Family Rides",
-    image: "/rides/waterfall.svg",
-    blurb: "A cooling visual landmark that anchors the park with a tropical, destination feel.",
-  },
-];
-
-export const rideCategories: RideCategory[] = [
-  "Water Rides",
-  "Thrill Rides",
-  "Family Rides",
 ];
 
 export const galleryItems = [
   {
     src: "/gallery-real/drone-overview.jpeg",
     title: "Park overview",
+    alt: "Flora Fantasia amusement park full aerial view Malappuram Kerala",
     span: "md:col-span-2 md:row-span-2",
   },
-  { src: "/gallery-real/coaster-couple.jpeg", title: "Coaster thrill", span: "" },
-  { src: "/gallery-real/aquarium-kids.jpeg", title: "Family discovery", span: "" },
-  { src: "/gallery-real/drop-tower-group.jpeg", title: "Sky drop view", span: "" },
-  { src: "/gallery-real/yellow-slide-top.jpeg", title: "Water geometry", span: "" },
-  { src: "/gallery-real/yellow-slide-pool.jpeg", title: "Splash pattern", span: "" },
+  { src: "/gallery-real/coaster-couple.jpeg", title: "Coaster thrill", alt: "Couple on coaster ride at Flora Fantasia amusement park", span: "" },
+  { src: "/gallery-real/aquarium-kids.jpeg", title: "Family discovery", alt: "Children at Flora Fantasia Fish Aquarium Malappuram Kerala", span: "" },
+  { src: "/gallery-real/drop-tower-group.jpeg", title: "Sky drop view", alt: "Group on drop tower ride at Flora Fantasia Kerala", span: "" },
+  { src: "/gallery-real/yellow-slide-top.jpeg", title: "Water geometry", alt: "Yellow water slide at Flora Fantasia water park Malappuram", span: "" },
+  { src: "/gallery-real/yellow-slide-pool.jpeg", title: "Splash pattern", alt: "Water slide splash pool at Flora Fantasia amusement park", span: "" },
   {
     src: "/gallery-real/tube-slide-action.jpeg",
     title: "Tube ride action",
+    alt: "Tube water slide ride at Flora Fantasia Kerala",
     span: "md:col-span-2",
   },
-  { src: "/gallery-real/family-slide-front.jpeg", title: "Slide rush", span: "" },
+  { src: "/gallery-real/family-slide-front.jpeg", title: "Slide rush", alt: "Family enjoying water slides at Flora Fantasia amusement park Kerala", span: "" },
   {
     src: "/gallery-real/slide-lanes-aerial.jpeg",
     title: "Lanes and river edge",
+    alt: "Multi-lane water slides aerial view at Flora Fantasia park",
     span: "md:col-span-2",
   },
-  { src: "/gallery-real/splash-raft.jpeg", title: "Splash landing", span: "" },
-  { src: "/gallery-real/family-raft-corner.jpeg", title: "Family raft", span: "" },
-  { src: "/gallery-real/green-slide-raft.jpeg", title: "Green slide ride", span: "" },
-  { src: "/gallery-real/pic1.JPG", title: "Park moments", span: "" },
-  { src: "/gallery-real/pic2.JPG", title: "Park moments", span: "" },
-  { src: "/gallery-real/pic3.JPG", title: "Park moments", span: "" },
-  { src: "/gallery-real/pic4.JPG", title: "Park moments", span: "" },
-  { src: "/gallery-real/pic5.jpg", title: "Park moments", span: "" },
-  { src: "/gallery-real/pic6.jpg", title: "Park moments", span: "" },
-  { src: "/gallery-real/pic7.JPG", title: "Park moments", span: "" },
-  { src: "/gallery-real/pic8.JPG", title: "Park moments", span: "" },
-  { src: "/gallery-real/pic9.JPG", title: "Park moments", span: "" },
+  { src: "/gallery-real/splash-raft.jpeg", title: "Splash landing", alt: "Splash raft water ride at Flora Fantasia Valancheri", span: "" },
+  { src: "/gallery-real/family-raft-corner.jpeg", title: "Family raft", alt: "Family on raft water ride at Flora Fantasia amusement park", span: "" },
+  { src: "/gallery-real/green-slide-raft.jpeg", title: "Green slide ride", alt: "Green water slide raft ride at Flora Fantasia Kerala", span: "" },
+  { src: "/gallery-real/pic1.JPG", title: "Park moments", alt: "Flora Fantasia amusement park moments Valancheri Kerala", span: "" },
+  { src: "/gallery-real/pic2.JPG", title: "Park moments", alt: "Flora Fantasia amusement park rides Malappuram", span: "" },
+  { src: "/gallery-real/pic3.JPG", title: "Park moments", alt: "Flora Fantasia family fun park Kerala", span: "" },
+  { src: "/gallery-real/pic4.JPG", title: "Park moments", alt: "Flora Fantasia water park attractions Kerala", span: "" },
+  { src: "/gallery-real/pic5.jpg", title: "Park moments", alt: "Flora Fantasia thrill rides Malappuram", span: "" },
+  { src: "/gallery-real/pic6.jpg", title: "Park moments", alt: "Flora Fantasia park experience Valancheri", span: "" },
+  { src: "/gallery-real/pic7.JPG", title: "Park moments", alt: "Flora Fantasia amusement park Kerala visitors", span: "" },
+  { src: "/gallery-real/pic8.JPG", title: "Park moments", alt: "Flora Fantasia family outing Malappuram Kerala", span: "" },
+  { src: "/gallery-real/pic9.JPG", title: "Park moments", alt: "Flora Fantasia best amusement park Malabar", span: "" },
 ];
 
 export const pricingTiers = [
@@ -240,7 +214,7 @@ export const testimonials = [
     location: "Tirur, Malappuram",
   },
   {
-    text: "The aquarium section genuinely surprised us - we didn't expect it to be that good. Kids absolutely loved it. Flora Fantasia is the complete package for a family day out.",
+    text: "The Fish Aquarium genuinely surprised us - we didn't expect it to be that good. Kids absolutely loved it. Flora Fantasia is the complete package for a family day out.",
     name: "Santhosh K.",
     location: "Manjeri",
   },
@@ -267,20 +241,23 @@ export const editorialPanels = [
   {
     eyebrow: "Brand Story",
     title: "13 Years of Pure Excitement in a World of Wonder…",
-    text: "In Kerala’s evolving tourism landscape, Flora Fantasia has carved a path of its own. Over the years, it has grown into one of the state’s most loved amusement destinations, where joy, safety, and unforgettable memories come together. Designed for both children and families, the mission is simple: create moments that stay with you forever. With complete entertainment experiences and thoughtfully designed attractions, every visit becomes a story worth remembering.",
+    text: "In Kerala's evolving tourism landscape, Flora Fantasia has carved a path of its own. Over the years, it has grown into one of the state's most loved amusement destinations, where joy, safety, and unforgettable memories come together. Designed for both children and families, the mission is simple: create moments that stay with you forever. With complete entertainment experiences and thoughtfully designed attractions, every visit becomes a story worth remembering.",
     image: "/gallery-real/family-slide-front.jpeg",
+    imageAlt: "Family enjoying water slides at Flora Fantasia amusement park Kerala",
   },
   {
     eyebrow: "Recognition",
     title: "Among the Highest in Visitor Footfall — Ranked #1 in Government Records.",
-    text: "In the financial year 2024–25, Flora Fantasia stood out as one of Kerala’s top-performing tourism destinations. With a significant rise in visitors, the park continues to set new benchmarks in experience and engagement. World-class safety systems, modern rides, and a truly family-friendly environment have made Flora Fantasia a preferred choice for thousands.",
+    text: "In the financial year 2024–25, Flora Fantasia stood out as one of Kerala's top-performing tourism destinations. With a significant rise in visitors, the park continues to set new benchmarks in experience and engagement. World-class safety systems, modern rides, and a truly family-friendly environment have made Flora Fantasia a preferred choice for thousands.",
     image: "/gallery-real/drone-overview.jpeg",
+    imageAlt: "Flora Fantasia amusement park aerial view from drone Valancheri Kerala",
   },
   {
     eyebrow: "Aquarium Experience",
     title: "A World of Wonders Beneath the Surface.",
     text: "Step into a beautifully curated aquatic world featuring a vibrant collection of marine life. Designed with modern facilities, this immersive space brings families closer to the magic of underwater ecosystems. From exotic fish to fascinating aquatic species, every corner invites curiosity, discovery, and awe.",
     image: "/gallery-real/aquarium-kids.jpeg",
+    imageAlt: "Children at Flora Fantasia Fish Aquarium Malappuram Kerala",
   },
 ];
 
@@ -319,7 +296,7 @@ export const aboutExperience = {
     "Welcome to Flora Fantasia, the ultimate family amusement park located in the heart of Malappuram. Our park offers a wide range of thrilling rides and attractions for visitors of all ages.",
     "At Flora Fantasia, we pride ourselves on being an eco-friendly amusement park, surrounded by lush greenery and beautiful landscapes. We strive to provide a fun and safe environment for our visitors while also preserving the natural beauty of our surroundings.",
     "Our park features a variety of exciting rides, including water slides, roller coasters, and carnival games. We also offer a range of dining options, including local cuisine and international favorites.",
-    "Visitors can store their personal belongings in our secure locker facilities, ensuring a worry-free experience. Children must be accompanied by adults at all times, and minimal height requirements must be met for some rides. Swimwear is mandatory while using the pools, and visitors are requested to take care of waste and maintain the park’s eco-friendly environment.",
+    "Visitors can store their personal belongings in our secure locker facilities, ensuring a worry-free experience. Children must be accompanied by adults at all times, and minimal height requirements must be met for some rides. Swimwear is mandatory while using the pools, and visitors are requested to take care of waste and maintain the park's eco-friendly environment.",
     "Join us at Flora Fantasia for a day filled with fun, adventure, and unforgettable memories. Book your tickets today and experience the thrill of our rides and attractions.",
   ],
 };
@@ -327,7 +304,7 @@ export const aboutExperience = {
 export const destinationCopy = {
   title: "Unleash Your Inner Child!",
   subtitle: "At Flora Fantasia Amusement Park, best tourist spot in Malappuram.",
-  text: "As a top tourist destination in Malappuram, Flora Fantasia offers an unforgettable experience for visitors from near and far. Whether you’re planning a family outing, a school trip, or a corporate event, we have the perfect setting to create lasting memories. Located in the heart of Malabar, Flora Fantasia Amusement Park is the perfect place for tourists and locals alike to enjoy a day of fun with family and friends.",
+  text: "As a top tourist destination in Malappuram, Flora Fantasia offers an unforgettable experience for visitors from near and far. Whether you're planning a family outing, a school trip, or a corporate event, we have the perfect setting to create lasting memories. Located in the heart of Malabar, Flora Fantasia Amusement Park is the perfect place for tourists and locals alike to enjoy a day of fun with family and friends.",
   closing:
     "Make your holidays unforgettable with Flora Fantasia. Our commitment to sustainable practices and environmental stewardship means every visit supports a responsible and eco-friendly destination.",
 };

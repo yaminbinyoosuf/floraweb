@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { socialLinks, WHATSAPP_LINK } from "@/lib/data";
 
@@ -119,10 +121,13 @@ export function Footer() {
             </p>
             <div className="flex flex-col gap-3">
               {[
-                { label: "Park Zones",  href: "#zones" },
-                { label: "All Rides",   href: "#rides" },
-                { label: "Gallery",     href: "#gallery" },
-                { label: "Directions",  href: "#location" },
+                { label: "Park Zones",      href: "#zones" },
+                { label: "All Rides",       href: "/rides" },
+                { label: "Fish Aquarium",   href: "/fish-aquarium" },
+                { label: "Tickets",         href: "/tickets" },
+                { label: "Gallery",         href: "#gallery" },
+                { label: "Plan Your Visit", href: "/plan-your-visit" },
+                { label: "Blog",            href: "/blog" },
               ].map((link) => (
                 <a
                   key={link.label}

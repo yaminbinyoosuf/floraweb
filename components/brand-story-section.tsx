@@ -39,7 +39,7 @@ export function BrandStorySection() {
                   >
                     <Image
                       src={panel.image}
-                      alt={panel.title}
+                      alt={panel.imageAlt || panel.title}
                       fill
                       sizes="(max-width:1024px) 100vw, 50vw"
                       className="object-cover transition duration-700 hover:scale-[1.03]"

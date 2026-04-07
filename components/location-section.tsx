@@ -179,7 +179,7 @@ export function LocationSection() {
             </motion.div>
 
             {/* Get directions button */}
-            <div className="mt-8">
+            <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
                 href={DIRECTIONS_LINK}
                 target="_blank"
@@ -198,6 +198,16 @@ export function LocationSection() {
                   <path d="M9 10a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"/><path d="M9 1C5.686 1 3 3.686 3 7c0 4.5 6 10 6 10s6-5.5 6-10c0-3.314-2.686-6-6-6z"/>
                 </svg>
                 Get Directions
+              </a>
+              <a
+                href="/blog/best-route-to-flora-fantasia"
+                className="inline-flex items-center gap-1.5 transition-colors duration-200 hover:text-white"
+                style={{ color: "rgba(255,255,255,0.45)", fontSize: "13px", fontFamily: "var(--font-sans)", fontWeight: 500 }}
+              >
+                Need detailed directions? Read our complete route guide
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                  <path d="M1 5h8M5 1l4 4-4 4"/>
+                </svg>
               </a>
             </div>
           </div>

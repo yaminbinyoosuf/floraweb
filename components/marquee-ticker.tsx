@@ -8,11 +8,16 @@ const items = [
   "500K+ Happy Visitors",
   "#1 in Kerala Footfall",
   "Open 11 AM – 6 PM Daily",
-  "Aquarium Experience",
+  "Fish Aquarium — Malabar's Best",
   "13 Years of Joy",
   "Wave Pool",
   "Rain Dance",
   "Tornado",
+  "Cyclone Coaster — New Ride",
+  "Aquatech Tank — New Experience",
+  "42 Rides & Attractions",
+  "Harakkiri Water Slide",
+  "50 Feet Water Fall",
   "WhatsApp Booking",
   "Instant Confirmation",
 ];
@@ -60,7 +65,7 @@ export function MarqueeTicker({ className = "" }: MarqueeTickerProps) {
             >
               {item}
             </span>
-            {/* Alternating orange and blue dots — slightly bigger */}
+            {/* Alternating orange and blue dots */}
             <span
               className="flex-shrink-0 rounded-full"
               style={{
