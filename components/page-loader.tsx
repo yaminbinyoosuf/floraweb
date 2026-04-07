@@ -35,12 +35,6 @@ export function PageLoader() {
         >
           <Image src="/flora-fantasia-logo.jpeg" alt="Flora Fantasia" fill className="object-cover" />
         </div>
-        <p
-          className="font-display font-black text-white uppercase"
-          style={{ fontSize: "18px", letterSpacing: "0.3em", opacity: 0.85 }}
-        >
-          FF
-        </p>
         {/* Loading bar */}
         <div
           className="h-0.5 w-20 rounded-full overflow-hidden"

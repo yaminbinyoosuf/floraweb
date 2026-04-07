@@ -85,20 +85,29 @@ export function PortalScreen({ open, onEnter }: { open: boolean; onEnter: () => 
               </span>
             </motion.div>
 
-            {/* Headline */}
-            <motion.h1
+            {/* Logo */}
+            <motion.div
               variants={{
                 hidden: { opacity: 0, y: 28, scale: 0.96 },
                 show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } },
                 exit:  { opacity: 0, y: -16 },
               }}
-              className="relative z-10 mt-6 font-display font-black text-white uppercase"
-              style={{ fontSize: "clamp(3.5rem, 11vw, 9rem)", lineHeight: 0.88, letterSpacing: "-0.03em" }}
+              className="relative z-10 mt-6"
             >
-              FLORA
-              <br />
-              <span className="text-gradient-orange">FANTASIA</span>
-            </motion.h1>
+              <img
+                src="/flora-fantasia-logo.jpeg"
+                alt="Flora Fantasia Amusement Park"
+                style={{
+                  width: "clamp(160px, 40vw, 260px)",
+                  height: "auto",
+                  objectFit: "contain",
+                  display: "block",
+                  margin: "0 auto 28px",
+                  filter: "drop-shadow(0 4px 24px rgba(0,0,0,0.5))",
+                  borderRadius: "16px",
+                }}
+              />
+            </motion.div>
 
             {/* Body */}
             <motion.p
