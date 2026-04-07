@@ -65,7 +65,6 @@ export function TopNav() {
               priority
             />
           </div>
-          <span className="ff-nav__brand">Flora Fantasia</span>
         </a>
 
         {/* Desktop links */}

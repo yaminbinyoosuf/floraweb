@@ -692,14 +692,6 @@ button, a.btn-primary {
   overflow: hidden;
   flex-shrink: 0;
 }
-.ff-nav__brand {
-  font-family: var(--font-display), sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #fff;
-  white-space: nowrap;
-}
-@media (max-width: 360px) { .ff-nav__brand { display: none; } }
 
 /* Desktop links */
 .ff-nav__links {

@@ -43,7 +43,7 @@ export function ImmersiveParkExperience() {
       <FloatingWhatsApp />
       <PortalScreen open={entered} onEnter={() => setEntered(true)} />
       <RippleSurface />
-      <TopNav />
+      {entered && <TopNav />}
       <HeroSection onExplore={scrollToZones} />
       <MarqueeTicker />
       <ScenicStory />
