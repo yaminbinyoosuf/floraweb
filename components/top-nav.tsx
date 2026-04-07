@@ -1,179 +1,235 @@
 "use client";
 
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import { usePathname } from "next/navigation";
+
+const WA_LINK =
+  "https://wa.me/919745239003?text=Hi%2C%20I%20want%20to%20book%20tickets%20for%20Flora%20Fantasia!";
 
 const navItems = [
-  { label: "Home",        href: "#hero" },
-  { label: "Attractions", href: "#rides" },
-  { label: "Aquarium",    href: "/fish-aquarium" },
-  { label: "Plan Visit",  href: "#location" },
-  { label: "Blog",        href: "/blog" },
-  { label: "Tickets",     href: "#booking" },
+  { label: "Home",        href: "/"                },
+  { label: "Attractions", href: "/rides"            },
+  { label: "Aquarium",    href: "/fish-aquarium"    },
+  { label: "Plan Visit",  href: "/plan-your-visit"  },
+  { label: "Blog",        href: "/blog"             },
+  { label: "Tickets",     href: "/tickets"          },
 ];
 
 export function TopNav() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("hero");
+  const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
 
+  // Mount guard — portal needs document.body
+  useEffect(() => { setMounted(true); }, []);
+
+  // Close on route change
+  useEffect(() => { setMenuOpen(false); }, [pathname]);
+
+  // Close on resize to desktop
   useEffect(() => {
-    const sections = ["hero", "rides", "location", "booking"];
-    const observers: IntersectionObserver[] = [];
-    sections.forEach(id => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const obs = new IntersectionObserver(
-        entries => { if (entries[0].isIntersecting) setActiveSection(id); },
-        { threshold: 0.25 }
-      );
-      obs.observe(el);
-      observers.push(obs);
-    });
-    return () => observers.forEach(o => o.disconnect());
+    const fn = () => { if (window.innerWidth >= 768) setMenuOpen(false); };
+    window.addEventListener("resize", fn);
+    return () => window.removeEventListener("resize", fn);
   }, []);
 
-  return (
-    <motion.header
-      initial={{ y: -40, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed inset-x-0 top-0 z-[60]"
-      style={{
-        background: "rgba(11,24,34,0.92)",
-        backdropFilter: "blur(20px)",
-        WebkitBackdropFilter: "blur(20px)",
-        borderBottom: "1px solid rgba(212,120,10,0.25)",
-      }}
-    >
-      {/* Nav content */}
-      <div className="shell relative flex items-center justify-between py-3 md:py-3.5">
+  // Scroll detection
+  useEffect(() => {
+    const fn = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", fn, { passive: true });
+    fn();
+    return () => window.removeEventListener("scroll", fn);
+  }, []);
 
-        {/* Left — Logo only */}
-        <a href="#hero" className="flex items-center">
-          <div
-            className="relative flex-shrink-0 overflow-hidden rounded-full"
-            style={{
-              width: "clamp(52px, 12vw, 72px)",
-              height: "clamp(52px, 12vw, 72px)",
-              border: "2.5px solid rgba(212,120,10,0.75)",
-              boxShadow: "0 0 0 4px rgba(212,120,10,0.18), 0 6px 28px rgba(0,0,0,0.55)",
-            }}
-          >
+  // Body scroll lock when menu open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
+  return (
+    <>
+      <header className={`ff-nav${scrolled ? " ff-nav--scrolled" : ""}`}>
+        {/* Logo */}
+        <a href="/" className="ff-nav__logo">
+          <div className="ff-nav__logo-img">
             <Image
               src="/flora-fantasia-logo.jpeg"
               alt="Flora Fantasia"
               fill
-              sizes="(max-width: 600px) 52px, 72px"
+              sizes="36px"
               className="object-cover"
+              priority
             />
           </div>
+          <span className="ff-nav__brand">Flora Fantasia</span>
         </a>
 
-        {/* Center — Desktop nav links */}
-        <nav className="hidden items-center gap-8 md:flex">
-          {navItems.map((item) => {
-            const sectionId = item.href.replace("#", "");
-            const isActive = activeSection === sectionId;
-            return (
+        {/* Desktop links */}
+        <nav className="ff-nav__links" aria-label="Main navigation">
+          {navItems.map((item) => (
             <a
-              key={item.label}
+              key={item.href}
               href={item.href}
-              className="group relative transition-colors duration-200 hover:text-white"
-              style={{ fontSize: "14px", fontWeight: 500, fontFamily: "var(--font-sans)", color: isActive ? "#F5A623" : "rgba(255,255,255,0.75)" }}
+              className={`ff-nav__link${pathname === item.href ? " ff-nav__link--active" : ""}`}
             >
               {item.label}
-              <span
-                className="absolute -bottom-0.5 left-0 h-[1.5px] rounded-full bg-[#D4780A] transition-all duration-300 group-hover:w-full"
-                style={{ width: isActive ? "100%" : "0" }}
-              />
             </a>
-            );
-          })}
+          ))}
         </nav>
 
-        {/* Right — Book Now + Hamburger */}
-        <div className="flex items-center gap-3">
-          <a
-            href="#booking"
-            className="hidden rounded-full px-6 py-2.5 text-white transition-all duration-200 hover:-translate-y-px md:flex"
+        {/* Desktop CTA */}
+        <a
+          href={WA_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ff-nav__cta"
+        >
+          Book Now
+        </a>
+
+        {/* Hamburger */}
+        <button
+          type="button"
+          className={`ff-nav__burger${menuOpen ? " open" : ""}`}
+          onClick={() => setMenuOpen((p) => !p)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+      </header>
+
+      {/* Mobile overlay — rendered via portal at document.body, bypasses all stacking contexts */}
+      {mounted && menuOpen && createPortal(
+        <div
+          role="dialog"
+          aria-modal="true"
+          style={{
+            position: "fixed",
+            top: 0, left: 0, right: 0, bottom: 0,
+            width: "100vw",
+            height: "100vh",
+            background: "rgba(5,12,20,0.98)",
+            zIndex: 99999,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "80px 24px 40px",
+            WebkitOverflowScrolling: "touch",
+          }}
+        >
+          {/* Close button */}
+          <button
+            onClick={() => setMenuOpen(false)}
+            aria-label="Close menu"
             style={{
-              background: "#D4780A",
-              fontSize: "13px",
-              fontWeight: 600,
-              letterSpacing: "0.05em",
-              fontFamily: "var(--font-sans)",
-              boxShadow: "0 4px 16px rgba(212,120,10,0.45)",
+              position: "absolute",
+              top: "16px", right: "16px",
+              width: "44px", height: "44px",
+              background: "rgba(255,255,255,0.1)",
+              border: "1px solid rgba(255,255,255,0.15)",
+              borderRadius: "50%",
+              color: "#fff",
+              fontSize: "18px",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
-            onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 0 20px rgba(212,120,10,0.6), 0 4px 16px rgba(212,120,10,0.45)"; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 16px rgba(212,120,10,0.45)"; }}
+          >✕</button>
+
+          {/* Logo */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/flora-fantasia-logo.jpeg"
+            alt="Flora Fantasia"
+            style={{
+              width: "60px", height: "60px",
+              borderRadius: "12px",
+              objectFit: "cover",
+              marginBottom: "32px",
+            }}
+          />
+
+          {/* Nav links */}
+          <nav
+            aria-label="Mobile navigation"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              width: "100%",
+              gap: "4px",
+              marginBottom: "32px",
+            }}
           >
-            Book Now
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setMenuOpen(false)}
+                style={{
+                  fontFamily: "var(--font-display), sans-serif",
+                  fontWeight: 700,
+                  fontSize: "28px",
+                  color: "rgba(255,255,255,0.8)",
+                  textDecoration: "none",
+                  padding: "10px 24px",
+                  width: "100%",
+                  textAlign: "center",
+                  borderRadius: "10px",
+                  display: "block",
+                }}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* WhatsApp CTA */}
+          <a
+            href={WA_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMenuOpen(false)}
+            style={{
+              display: "block",
+              background: "#25D366",
+              color: "#fff",
+              padding: "15px 36px",
+              borderRadius: "999px",
+              fontFamily: "var(--font-sans), sans-serif",
+              fontSize: "15px",
+              fontWeight: 600,
+              textDecoration: "none",
+              textAlign: "center",
+              width: "100%",
+              maxWidth: "260px",
+              marginBottom: "16px",
+            }}
+          >
+            Book Now on WhatsApp
           </a>
 
-          {/* Hamburger */}
-          <button
-            type="button"
-            onClick={() => setMenuOpen((v) => !v)}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            className="flex h-9 w-9 flex-col items-center justify-center gap-[5px] rounded-full transition hover:bg-white/10 md:hidden"
-            style={{ border: "1px solid rgba(255,255,255,0.25)" }}
-          >
-            {[0, 1, 2].map((i) => (
-              <span
-                key={i}
-                className={`block h-0.5 origin-center bg-white transition-all duration-200 ${
-                  i === 0 ? `w-5 ${menuOpen ? "translate-y-[7px] rotate-45" : ""}` :
-                  i === 1 ? `w-4 ${menuOpen ? "scale-x-0 opacity-0" : ""}` :
-                  `w-5 ${menuOpen ? "-translate-y-[7px] -rotate-45" : ""}`
-                }`}
-              />
-            ))}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile fullscreen overlay */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[-1] flex flex-col items-center justify-center backdrop-blur-2xl md:hidden"
-            style={{ background: "rgba(11,24,34,0.96)" }}
-          >
-            <nav className="flex flex-col items-center gap-8">
-              {navItems.map((item, i) => (
-                <motion.a
-                  key={item.label}
-                  href={item.href}
-                  onClick={() => setMenuOpen(false)}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.08, duration: 0.4 }}
-                  className="font-display font-black text-white/80 transition hover:text-white"
-                  style={{ fontSize: "clamp(2rem, 8vw, 3rem)", letterSpacing: "-0.01em" }}
-                >
-                  {item.label}
-                </motion.a>
-              ))}
-              <motion.a
-                href="#booking"
-                onClick={() => setMenuOpen(false)}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.32, duration: 0.4 }}
-                className="mt-4 rounded-full px-8 py-3.5 text-white"
-                style={{ background: "#D4780A", fontSize: "16px", fontWeight: 600, fontFamily: "var(--font-sans)" }}
-              >
-                Book Now
-              </motion.a>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.header>
+          <p style={{
+            fontFamily: "var(--font-sans), sans-serif",
+            fontSize: "12px",
+            color: "rgba(255,255,255,0.2)",
+            textAlign: "center",
+            margin: 0,
+          }}>
+            Open Daily · 11 AM – 6 PM · Valancheri, Malappuram
+          </p>
+        </div>,
+        document.body
+      )}
+    </>
   );
 }

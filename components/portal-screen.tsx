@@ -60,6 +60,32 @@ export function PortalScreen({ open, onEnter }: { open: boolean; onEnter: () => 
               transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
             />
 
+            {/* Logo — first, prominent */}
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 28, scale: 0.96 },
+                show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } },
+                exit:  { opacity: 0, y: -16 },
+              }}
+              className="relative z-10"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/flora-fantasia-logo.jpeg"
+                alt="Flora Fantasia Amusement Park"
+                style={{
+                  width: "clamp(100px, 28vw, 180px)",
+                  height: "clamp(100px, 28vw, 180px)",
+                  borderRadius: "24px",
+                  objectFit: "cover",
+                  display: "block",
+                  margin: "0 auto",
+                  boxShadow: "0 8px 40px rgba(0,0,0,0.5)",
+                  filter: "drop-shadow(0 0 20px rgba(212,120,10,0.3))",
+                }}
+              />
+            </motion.div>
+
             {/* Kerala badge */}
             <motion.div
               variants={{
@@ -67,11 +93,12 @@ export function PortalScreen({ open, onEnter }: { open: boolean; onEnter: () => 
                 show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
                 exit:  { opacity: 0, y: -8 },
               }}
+              className="mt-7"
             >
               <span
-                className="inline-flex items-center gap-2 rounded-full px-5 py-2 backdrop-blur-sm"
+                className="inline-flex items-center gap-2 rounded-full px-5 py-2"
                 style={{
-                  border: "1px solid rgba(27,184,232,0.5)",
+                  border: "1px solid rgba(27,184,232,0.4)",
                   color: "#1BB8E8",
                   fontSize: "11px",
                   fontWeight: 500,
@@ -85,30 +112,6 @@ export function PortalScreen({ open, onEnter }: { open: boolean; onEnter: () => 
               </span>
             </motion.div>
 
-            {/* Logo */}
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 28, scale: 0.96 },
-                show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } },
-                exit:  { opacity: 0, y: -16 },
-              }}
-              className="relative z-10 mt-6"
-            >
-              <img
-                src="/flora-fantasia-logo.jpeg"
-                alt="Flora Fantasia Amusement Park"
-                style={{
-                  width: "clamp(160px, 40vw, 260px)",
-                  height: "auto",
-                  objectFit: "contain",
-                  display: "block",
-                  margin: "0 auto 28px",
-                  filter: "drop-shadow(0 4px 24px rgba(0,0,0,0.5))",
-                  borderRadius: "16px",
-                }}
-              />
-            </motion.div>
-
             {/* Body */}
             <motion.p
               variants={{
@@ -116,8 +119,8 @@ export function PortalScreen({ open, onEnter }: { open: boolean; onEnter: () => 
                 show: { opacity: 1, y: 0, transition: { duration: 0.7 } },
                 exit:  { opacity: 0 },
               }}
-              className="relative z-10 mt-7 max-w-md text-white/60"
-              style={{ fontSize: "1.05rem", lineHeight: 1.8, fontFamily: "var(--font-sans)" }}
+              className="relative z-10 mt-5 max-w-sm text-white/60"
+              style={{ fontSize: "clamp(14px, 3.5vw, 16px)", lineHeight: 1.65, fontFamily: "var(--font-sans)" }}
             >
               Step through a cinematic portal into water, thrill, and family zones
               crafted as one continuous digital park journey.
