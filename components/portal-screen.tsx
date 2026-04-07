@@ -71,29 +71,31 @@ export function PortalScreen({ open, onEnter }: { open: boolean; onEnter: () => 
               transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
             />
 
-            {/* Logo — first, prominent */}
-            <motion.div
+            {/* Headline */}
+            <motion.h1
               variants={{
                 hidden: { opacity: 0, y: 28, scale: 0.96 },
                 show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } },
                 exit:  { opacity: 0, y: -16 },
               }}
-              className="relative z-10"
+              style={{
+                fontFamily: "var(--font-display), 'Syne', sans-serif",
+                fontWeight: 800,
+                fontSize: "clamp(72px, 18vw, 140px)",
+                lineHeight: 0.88,
+                letterSpacing: "-0.04em",
+                textAlign: "center",
+                margin: "0 0 28px",
+              }}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/flora-fantasia-logo-transparent.png"
-                alt="Flora Fantasia Amusement Park"
-                style={{
-                  width: "clamp(260px, 72vw, 400px)",
-                  height: "auto",
-                  objectFit: "contain",
-                  display: "block",
-                  margin: "0 auto 40px",
-                  filter: "drop-shadow(0 8px 32px rgba(0,0,0,0.8)) brightness(1.1) contrast(1.08) saturate(1.1)",
-                }}
-              />
-            </motion.div>
+              <span style={{ color: "#ffffff", display: "block" }}>FLORA</span>
+              <span style={{
+                display: "block",
+                background: "linear-gradient(90deg, #D4780A, #F5A623)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}>FANTASIA</span>
+            </motion.h1>
 
             {/* Kerala badge */}
             <motion.div
