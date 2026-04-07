@@ -47,7 +47,18 @@ export function PortalScreen({ open, onEnter }: { open: boolean; onEnter: () => 
               show: { transition: { staggerChildren: 0.12, delayChildren: 0.3 } },
               exit:  { transition: { staggerChildren: 0.05 } },
             }}
-            className="relative flex max-w-2xl flex-col items-center text-center"
+            style={{
+              position: "relative",
+              zIndex: 2,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              paddingTop: "18vh",
+              paddingLeft: "24px",
+              paddingRight: "24px",
+              textAlign: "center",
+              gap: "20px",
+            }}
           >
             {/* Ambient glow */}
             <motion.div
@@ -74,12 +85,12 @@ export function PortalScreen({ open, onEnter }: { open: boolean; onEnter: () => 
                 src="/flora-fantasia-logo-transparent.png"
                 alt="Flora Fantasia Amusement Park"
                 style={{
-                  width: "clamp(200px, 55vw, 320px)",
+                  width: "clamp(260px, 72vw, 400px)",
                   height: "auto",
                   objectFit: "contain",
                   display: "block",
-                  margin: "0 auto 32px",
-                  filter: "drop-shadow(0 6px 24px rgba(0,0,0,0.7)) brightness(1.08) contrast(1.05)",
+                  margin: "0 auto 40px",
+                  filter: "drop-shadow(0 8px 32px rgba(0,0,0,0.8)) brightness(1.1) contrast(1.08) saturate(1.1)",
                 }}
               />
             </motion.div>
