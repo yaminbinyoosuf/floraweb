@@ -55,16 +55,20 @@ export function TopNav() {
       <header className={`ff-nav${scrolled ? " ff-nav--scrolled" : ""}`}>
         {/* Logo */}
         <a href="/" className="ff-nav__logo">
-          <div className="ff-nav__logo-img">
-            <Image
-              src="/flora-fantasia-logo.jpeg"
-              alt="Flora Fantasia"
-              fill
-              sizes="36px"
-              className="object-cover"
-              priority
-            />
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/flora-fantasia-logo.jpeg"
+            alt="Flora Fantasia"
+            style={{
+              width: "46px",
+              height: "46px",
+              borderRadius: "50%",
+              objectFit: "cover",
+              objectPosition: "center",
+              display: "block",
+              border: "2px solid rgba(212,120,10,0.4)",
+            }}
+          />
         </a>
 
         {/* Desktop links */}

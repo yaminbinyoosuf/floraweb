@@ -74,12 +74,12 @@ export function PortalScreen({ open, onEnter }: { open: boolean; onEnter: () => 
                 src="/flora-fantasia-logo-transparent.png"
                 alt="Flora Fantasia Amusement Park"
                 style={{
-                  width: "clamp(160px, 38vw, 240px)",
+                  width: "clamp(200px, 55vw, 320px)",
                   height: "auto",
                   objectFit: "contain",
                   display: "block",
-                  margin: "0 auto 28px",
-                  filter: "drop-shadow(0 8px 32px rgba(0,0,0,0.6))",
+                  margin: "0 auto 32px",
+                  filter: "drop-shadow(0 6px 24px rgba(0,0,0,0.7)) brightness(1.08) contrast(1.05)",
                 }}
               />
             </motion.div>
