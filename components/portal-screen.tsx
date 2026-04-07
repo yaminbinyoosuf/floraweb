@@ -53,11 +53,11 @@ export function PortalScreen({ open, onEnter }: { open: boolean; onEnter: () => 
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              paddingTop: "18vh",
-              paddingLeft: "24px",
-              paddingRight: "24px",
+              justifyContent: "center",
               textAlign: "center",
-              gap: "20px",
+              padding: "0 24px",
+              gap: "16px",
+              marginTop: "-60px",
             }}
           >
             {/* Ambient glow */}
@@ -71,40 +71,13 @@ export function PortalScreen({ open, onEnter }: { open: boolean; onEnter: () => 
               transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
             />
 
-            {/* Headline */}
-            <motion.h1
-              variants={{
-                hidden: { opacity: 0, y: 28, scale: 0.96 },
-                show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } },
-                exit:  { opacity: 0, y: -16 },
-              }}
-              style={{
-                fontFamily: "var(--font-display), 'Syne', sans-serif",
-                fontWeight: 800,
-                fontSize: "clamp(72px, 18vw, 140px)",
-                lineHeight: 0.88,
-                letterSpacing: "-0.04em",
-                textAlign: "center",
-                margin: "0 0 28px",
-              }}
-            >
-              <span style={{ color: "#ffffff", display: "block" }}>FLORA</span>
-              <span style={{
-                display: "block",
-                background: "linear-gradient(90deg, #D4780A, #F5A623)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}>FANTASIA</span>
-            </motion.h1>
-
-            {/* Kerala badge */}
+            {/* Kerala badge — top */}
             <motion.div
               variants={{
                 hidden: { opacity: 0, y: 16 },
                 show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
                 exit:  { opacity: 0, y: -8 },
               }}
-              className="mt-7"
             >
               <span
                 className="inline-flex items-center gap-2 rounded-full px-5 py-2"
@@ -123,6 +96,32 @@ export function PortalScreen({ open, onEnter }: { open: boolean; onEnter: () => 
               </span>
             </motion.div>
 
+            {/* Headline — below badge */}
+            <motion.h1
+              variants={{
+                hidden: { opacity: 0, y: 28, scale: 0.96 },
+                show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } },
+                exit:  { opacity: 0, y: -16 },
+              }}
+              style={{
+                fontFamily: "var(--font-display), 'Syne', sans-serif",
+                fontWeight: 800,
+                fontSize: "clamp(72px, 18vw, 140px)",
+                lineHeight: 0.88,
+                letterSpacing: "-0.04em",
+                textAlign: "center",
+                margin: 0,
+              }}
+            >
+              <span style={{ color: "#ffffff", display: "block" }}>FLORA</span>
+              <span style={{
+                display: "block",
+                background: "linear-gradient(90deg, #D4780A, #F5A623)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}>FANTASIA</span>
+            </motion.h1>
+
             {/* Body */}
             <motion.p
               variants={{
@@ -130,7 +129,7 @@ export function PortalScreen({ open, onEnter }: { open: boolean; onEnter: () => 
                 show: { opacity: 1, y: 0, transition: { duration: 0.7 } },
                 exit:  { opacity: 0 },
               }}
-              className="relative z-10 mt-5 max-w-sm text-white/60"
+              className="relative z-10 max-w-sm text-white/60"
               style={{ fontSize: "clamp(14px, 3.5vw, 16px)", lineHeight: 1.65, fontFamily: "var(--font-sans)" }}
             >
               Step through a cinematic portal into water, thrill, and family zones
@@ -144,7 +143,7 @@ export function PortalScreen({ open, onEnter }: { open: boolean; onEnter: () => 
                 show: { opacity: 1, y: 0, transition: { duration: 0.7 } },
                 exit:  { opacity: 0 },
               }}
-              className="relative z-10 mt-10"
+              className="relative z-10"
             >
               <button
                 type="button"
