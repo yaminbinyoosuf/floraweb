@@ -37,6 +37,7 @@ export function FloatingWhatsApp() {
           background: #25D366;
           animation: wa-pulse-ring 2s ease-out infinite;
           z-index: -1;
+          will-change: transform, opacity;
         }
         @keyframes wa-pulse-ring {
           0%   { transform: scale(1);   opacity: 0.5; }

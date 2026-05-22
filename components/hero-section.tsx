@@ -94,7 +94,7 @@ export function HeroSection({ onExplore }: { onExplore: () => void }) {
 
       {/* ── Content ── */}
       <motion.div
-        className="shell relative z-10 flex min-h-screen flex-col justify-start pt-20 pb-16 md:pt-36 md:pb-20 md:justify-center"
+        className="shell relative z-10 flex min-h-screen flex-col justify-start pt-20 pb-16 md:pt-24 md:pb-20 md:justify-center"
         style={{ y: contentY, opacity }}
       >
         <motion.div
@@ -253,9 +253,9 @@ export function HeroSection({ onExplore }: { onExplore: () => void }) {
           style={{ borderColor: "rgba(255,255,255,0.08)", maxWidth: "680px" }}
         >
           {parkStats.map((stat) => (
-            <div key={stat.label} className="flex flex-col">
+            <div key={stat.label} className="hero-stat-item flex flex-col">
               <span
-                className="font-display font-black"
+                className="hero-stat-value font-display font-black"
                 style={{
                   fontSize: "clamp(1.4rem, 6vw, 3.5rem)",
                   lineHeight: 1,
@@ -269,7 +269,7 @@ export function HeroSection({ onExplore }: { onExplore: () => void }) {
                 {stat.value}
               </span>
               <span
-                className="mt-1 uppercase text-white/50"
+                className="hero-stat-label mt-1 uppercase text-white/50"
                 style={{ fontSize: "clamp(7px, 1.8vw, 10px)", letterSpacing: "0.12em", fontFamily: "var(--font-sans)", fontWeight: 500 }}
               >
                 {stat.label}
